@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC
+    "-//Apache Software Foundation//DTD Log4j Configuration 1.2//EN"
+    "http://logging.apache.org/log4j/docs/api/org/apache/log4j/xml/log4j.dtd">
+	  
+<log4j:configuration debug="false" xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+  <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="INFO"/>
+    <param name="target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n"/>
+      <!-- <param name="ConversionPattern" value="%-4r %-5p - %m%n"/> -->
+    </layout>	    
+    <filter class="org.apache.log4j.varia.LevelMatchFilter">
+      <param name="LevelToMatch" value="error" />
+      <param name="AcceptOnMatch" value="false" />
+    </filter>
+  </appender>
+
+  <appender name="stderr" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="ERROR"/> 
+    <param name="target" value="System.err"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%-4r %-5p - %m%n"/>
+    </layout>	    
+    <filter class="org.apache.log4j.varia.LevelMatchFilter">
+      <param name="LevelToMatch" value="error" />
+      <param name="AcceptOnMatch" value="true" />
+    </filter>
+    <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+  </appender>
+  
+  <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${wankman.WankmanApp.logDirectory}logging.log" />
+        <param name="Threshold" value="INFO"/>
+        <param name="Append" value="true" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %t %-5p %c{2} - %m%n"/>
+        </layout>           
+  </appender>
+
+  <appender name="verbose-debug" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="INFO"/> 
+    <param name="target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n"/>
+    </layout>	    
+    <filter class="org.apache.log4j.varia.LevelMatchFilter">
+      <param name="LevelToMatch" value="debug" />
+      <param name="AcceptOnMatch" value="true" />
+    </filter>
+  </appender>
+  
+
+   
+   <!-- Limit the org.apache.commons category to WARN as its INFO is verbose -->
+   <category name="org.apache.commons">
+      <priority value="WARN"/>
+   </category>
+
+   <category name="org.hibernate">
+      <priority value="INFO"/>
+   </category>
+   <category name="org.hibernate.SQL">
+      <priority value="INFO"/>
+   </category>
+   <category name="org.hibernate.type">
+      <priority value="INFO"/>
+   </category>
+   <category name="org.myjaphoo">
+      <priority value="INFO"/>
+   </category>
+   <category name="org.myjaphoo.model.logic.WankmanDB">
+      <priority value="INFO"/>
+   </category>
+
+  <root>
+    <level value="DEBUG" />
+    <appender-ref ref="stdout" />
+    <appender-ref ref="file" />
+    <!--appender-ref ref="stderr" /-->
+    <!--appender-ref ref="verbose-debug"/-->
+  </root>	
+  
+</log4j:configuration>

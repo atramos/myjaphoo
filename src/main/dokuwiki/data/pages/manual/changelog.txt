@@ -1,0 +1,5 @@
+======Changelog======
+
+
+
+All changes in the application (e.g. adding tags, metatags, imports, deletions, etc), are saved within the application. You could review the changelog in the Changelog Panel.

@@ -1,0 +1,68 @@
+
+======First Steps======
+
+
+
+Myjaphoo handles media collections (i.e. collections of pictures and/or movie files). It has therefore an internal database (as default it uses derby sql database) to store all information about the media. The database contains only information about the media - it does not contain the media files itself. You have to first "import" the information about the media data into this database. Per default myjaphoo stores the internal database in its installation folder. You could also change the location of the database in the options dialog or define a different database connection, see [[manual:multipledatabasesetup|Multiple Database Setup]].
+
+
+
+Please note, that all changes you make will only change the content of this collections database (e.g. filtering, structurizing, adding comments, title, tags, metatags), but not your actual media files. There are only some functions which change your media files in your file system, and where you should take special care when using it: this includes deletion of media files, and copying of media files.  
+
+<note warning>the only functions where you actually delete data on your computer is the "delete entries" function. So be patient here. All other functions change only the content of the database of myjaphoo</note>
+
+
+=====Import Files into the database=====
+
+
+
+
+
+
+
+
+
+Choosing the menu "Files->Import" will open the import dialog. 
+
+{{ :01import.png |}}
+
+
+You see a filebox where you can select a folder with media files to import. At the bottom you see a drop down where you can select what type of files to import (either pictures or movies). Click the import button to start the process. The import could take quite a while for large folders, so please be patient. When the process is finished close the dialog (or continue with the import of other folders).
+
+{{ :02importdialog.png |}}
+
+
+
+
+
+=====Updating imported Directories=====
+
+
+
+You can just import the same directories again. The import will update the database with newly added files.
+
+
+
+
+=====Working with collections=====
+
+
+
+
+
+Now that you have imported media files, you are able to browse your collection, add additional information e.g. comments, ratings, titles; You could structure your data by adding tag and meta tag information; you could create views which filter and group your collections; you could save those views as bookmarks.
+
+
+
+You could freely arrange all parts of the user interface. You could change the size of panels, move them to another place or even a new window, close them and arrange them into tabs.
+
+
+
+
+
+
+=====Browsing the Collection=====
+
+
+
+When you look at the view you could see on the left site the media tree, at the bottom the tags and metatags panel. At the right part you see the thumb views which are divided into the thumb-list view, the regular thumb view and the stripes view. They all show the same data, but provide different views of the data.

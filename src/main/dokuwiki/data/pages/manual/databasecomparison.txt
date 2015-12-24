@@ -1,0 +1,8 @@
+
+
+======Comparison with other myjaphoo databases======
+
+
+
+There is a simple function to compare the myjaphoo database with another myjaphoo database. Main reason is here to find out duplicates. In the menu "Compare DBs" you could open a database for comparison. When you have opened a comparison database, you could e.g. group by comparison database to get an overview which entries are in the comparison database and which not.
+

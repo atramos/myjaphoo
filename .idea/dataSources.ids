@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="MJ DB" product="Apache Derby" version="10.5.3.0 - (802917)" jdbc-version="4.0" driver-name="Apache Derby Embedded JDBC Driver" driver-version="10.5.3.0 - (802917)" uuid="d5f6ca62-3005-4bea-a69d-23efa8a09f2c">
+    <identifier-quote-string>"</identifier-quote-string>
+    <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
+    <jdbc-url>jdbc:derby:L:\demodb\myjaphoo\myjaphoodb</jdbc-url>
+    <user-name>app</user-name>
+    <schema-pattern>*.APP</schema-pattern>
+    <default-schemas>*.APP</default-schemas>
+    <default-dialect>Derby</default-dialect>
+    <libraries>
+      <library>
+        <url>file://$PROJECT_DIR$/lib/derby.jar</url>
+      </library>
+    </libraries>
+    <table name="BOOKMARK" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="CREATED" sqlType="TIMESTAMP" length="26" precision="6" nullable="true" jdbcType="93" />
+      <column name="CURRENTSELECTEDDIR" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="FILTEREXPRESSION" sqlType="VARCHAR" length="4048" precision="0" nullable="true" jdbcType="12" />
+      <column name="LISTCHILDMOVIES" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="PRUNETREE" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="STRUCTTYPE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="USERDEFINEDSTRUCT" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12" />
+      <column name="USERDEFINEDSTRUCTUREACTIVATED" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="DESCR" sqlType="VARCHAR" length="2000" precision="0" nullable="true" jdbcType="12" />
+      <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="THUMBMODE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="SQL120221114320970" columns="id" />
+    </table>
+    <table name="CHANGELOG" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="CLTYPE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="CREATED" sqlType="TIMESTAMP" length="26" precision="6" nullable="true" jdbcType="93" />
+      <column name="MSG" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="OBJDESCRIPTION" sqlType="VARCHAR" length="4048" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="SQL120221114321020" columns="id" />
+    </table>
+    <table name="CHRONICENTRY" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="CREATED" sqlType="TIMESTAMP" length="26" precision="6" nullable="true" jdbcType="93" />
+      <column name="CURRENTSELECTEDDIR" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="FILTEREXPRESSION" sqlType="VARCHAR" length="4048" precision="0" nullable="true" jdbcType="12" />
+      <column name="LISTCHILDMOVIES" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="PRUNETREE" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="STRUCTTYPE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="USERDEFINEDSTRUCT" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12" />
+      <column name="USERDEFINEDSTRUCTUREACTIVATED" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="THUMBMODE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="SQL120221114321040" columns="id" />
+    </table>
+    <table name="DATABASEVERSION" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="DBVERSION" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <column name="UPGRADEDAT" sqlType="TIMESTAMP" length="26" precision="6" nullable="true" jdbcType="93" />
+      <primary-key name="SQL120911164345711" columns="id" />
+    </table>
+    <table name="HIBERNATE_UNIQUE_KEY" schema="APP" catalog="" type="TABLE">
+      <column name="NEXT_HI" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+    </table>
+    <table name="METATOKEN" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="DESCRIPTION" sqlType="VARCHAR" length="2024" precision="0" nullable="true" jdbcType="12" />
+      <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="PARENT_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="SQL120221114321070" columns="id" />
+      <foreign-key name="FK3718CED4C0D5A0B4" columns="PARENT_ID" ref-table="METATOKEN" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="MOVIEENTRY" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="CANONICALDIR" sqlType="VARCHAR" length="1024" precision="0" nullable="true" jdbcType="12" />
+      <column name="CHECKSUMCRC32" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <column name="COMMENT" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12" />
+      <column name="EXIFCREATEDATE" sqlType="TIMESTAMP" length="26" precision="6" nullable="true" jdbcType="93" />
+      <column name="EXIFEXPOSURETIME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="EXIFFNUMBER" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="EXIFISO" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="EXIFMAKE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="EXIFMODEL" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="LATITUDE" sqlType="DOUBLE" length="52" precision="0" nullable="true" jdbcType="8" />
+      <column name="LONGITUDE" sqlType="DOUBLE" length="52" precision="0" nullable="true" jdbcType="8" />
+      <column name="SEREXIFDATA" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12" />
+      <column name="FILELENGTH" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="BITRATE" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="FORMAT" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="FPS" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="HEIGHT" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="LENGTH" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="WIDTH" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="RATING" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="TITLE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="SQL120221114321100" columns="id" />
+    </table>
+    <table name="PATHMAPPING" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="PATHPREFIX" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="SUBSTITUTION" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="SQL120221114321130" columns="id" />
+    </table>
+    <table name="PREFS" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <primary-key name="SQL120221114321160" columns="id" />
+    </table>
+    <table name="THUMBNAIL" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="H" sqlType="INTEGER" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="THUMBNAIL" sqlType="BLOB" length="1000000" precision="0" nullable="true" jdbcType="2004" />
+      <column name="W" sqlType="INTEGER" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="MOVIEENTRY_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="SQL120221114321220" columns="id" />
+      <foreign-key name="FKC6C070CC7E52FF6A" columns="MOVIEENTRY_ID" ref-table="MOVIEENTRY" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="TOKEN" schema="APP" catalog="" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="DESCRIPTION" sqlType="VARCHAR" length="2024" precision="0" nullable="true" jdbcType="12" />
+      <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="TOKENTYPE" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="PARENT_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="SQL120221114321250" columns="id" />
+      <foreign-key name="FK4D3C9D9CC6BA3B9" columns="PARENT_ID" ref-table="TOKEN" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="TOKEN_METATOKEN" schema="APP" catalog="" type="TABLE">
+      <column name="METATOKENS_ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="TOKEN_ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <primary-key name="SQL120221114321180" columns="metatokens_id,token_id" />
+      <foreign-key name="FK8F25B00EEC409D5F" columns="METATOKENS_ID" ref-table="METATOKEN" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2" />
+      <foreign-key name="FK8F25B00EF3A3C0A" columns="TOKEN_ID" ref-table="TOKEN" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="TOKEN_MOVIEENTRY" schema="APP" catalog="" type="TABLE">
+      <column name="TOKENS_ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="MOVIEENTRIES_ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <primary-key name="SQL120221114321200" columns="tokens_id,movieentries_id" />
+      <foreign-key name="FK7D0CD5683CB89A8C" columns="MOVIEENTRIES_ID" ref-table="MOVIEENTRY" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2" />
+      <foreign-key name="FK7D0CD5685981C0C9" columns="TOKENS_ID" ref-table="TOKEN" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+  </data-source>
+</component>

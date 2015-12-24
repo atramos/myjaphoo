@@ -1,0 +1,13 @@
+glob:*.class
+glob:build/*
+glob:dist/*
+glob:target/*
+glob:out/*
+glob:wankmanlocaldb/*
+glob:*.log
+glob:wmlogging.log*
+glob:logging.log*
+glob:cobertura.ser
+glob:bin/*
+
+

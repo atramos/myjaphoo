@@ -1,0 +1,72 @@
+
+======Multiple Database Setup======
+
+
+
+The installation packages provide a configuration for normal usage where the application uses one database. All data is saved in the user directory. This means on windows system this is usually the directory
+
+''c:\user\<username>\.myjaphoo''
+
+
+
+whereas on linux or unix systems it would be
+
+''/home/<username>\.myjaphoo''
+
+
+
+This directoy will contain the database, the log files and all configuration scripts used by the program.
+
+If you want to setup multiple installations with each one having its own database you could do this the following way. You need to execute this instructions for each separate installation:
+
+  *copy the installation folder to a new directory
+  *set the property wankman.model.util.UserDirectory=<dirForThisInstallation> to point to the directory where you want to put the database and all configuration preferences. You have to set this property either in the startup scripts or in the appstarts.properties, depending on how you want to start the application.
+  *The application will then use the given directory to create a database (if not already existing) .
+
+======Using other Database Provider======
+
+
+
+At default MyJaPhoO uses internally the Apache Derby database to store all information. Since version 3.4 MyJaPhoO is able to use databases from other providers to store all information. It is possible to define multiple database connections and use these connections as main database or for comparison. Currently the following provider are supported:
+
+
+
+  *Apache Derby in embedded mode saved on the local file system (used by default without any further configuration)
+  *Apache Derby Network mode
+  *H2 in embedded mode
+  *H2 in network mode
+  *Postgres
+  *MySQL
+  *Oracle 10g
+
+
+
+
+
+
+=====JDBC Driver=====
+
+
+
+The distribution contains only the JDBC driver for Apache Derby and H2. If you plan to use one of the other databases, you need to get your own copy of the JDBC driver and copy it to the applications lib directory. When you start the application via the start.jar the JDBC drivers are automatically included into the applications classpath and are available for usage.
+
+
+
+
+=====Database Configuration=====
+
+The Application has a view "Database Configuration" where you can administer the connections.
+
+There are buttons to create, edit and delete configurations. When creating or editing, a Dialogue opens which has input fields for all connection parameters relevant for the selected database driver. You need to properly fill the information. There is the possibility to test the connections to check, if the connection works.
+
+
+
+
+=====Using a connection=====
+
+To use one of the defined connections as main database, you have to select the connection in the preferences dialog. There are to preferences: 
+
+  *Database->Database Configuration Name: Choose the database configuration to use
+  *Database->Use other database configuration: activate this to use the database configuration instead of the default one
+  *You have to restart the application
+

@@ -1,0 +1,79 @@
+
+======Thumb Views======
+
+
+
+There are three thumb views to display the content of your collection. They all display the same data, but in different form or structure. There is a Master-Detail relationship between the media tree and the thumbs view. The thumbs view only shows all underneath items of the selected node in the media tree. The default is to show only the direct children of the selected node. If you select "List Children" in the media tree, all children and grandchildren are shown in the thumb views.
+
+
+
+
+====Thumb List View====
+
+
+{{ :04thumbview.png |}}
+
+
+
+
+The Thumb list view displays a list with the thumbs and other attributes of entries.  It displays up to 5 thumbs for each entry (they are only filled for movies, for pictures only one thumb is created).
+
+
+
+The thumb view contains also a "Breadcrumb" at the top to easier navigate in the structure.
+
+
+
+
+====Thumb Grid View====
+
+
+
+{{ :04thumbview2.png |}}
+
+
+
+
+
+The thumb view displays a grid of thumbs, one for each entry.
+
+
+
+
+====Thumb Stripes View====
+
+
+
+{{ :07thumbstripes.png |}}
+
+
+
+The stripe view is a special kind of thumb view which shows all entries of the structured sub-nodes of the selected node in the media tree as "stripe" with thumbs for each entry. Each stripe (sub-node) is a row in the view. 
+
+
+
+<note tip>Its often a good choice  to select "list children" in the media tree when using the stripes view, to see all underneath thumbs. Otherwise you would only see direct children of the node
+</note>
+
+
+
+
+
+
+
+====Selection of entries====
+
+
+
+You can select one or multiple entries in the thumb views. You select multiple entries by holding the  shift or control key and clicking on entries. You can select all entries by pressing Ctrl-A. In the Stripes view you could select all entries of one "Stripe" by double clicking on the first column of a stripe.
+
+
+
+
+
+
+=====Multiple Views=====
+
+
+
+You could open multiple UI windows (called Views) on the same collection. You could this way have different views on the data (e.g. with different filter and groupings) in different windows.

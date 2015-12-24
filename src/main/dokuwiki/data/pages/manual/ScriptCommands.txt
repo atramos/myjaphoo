@@ -1,0 +1,39 @@
+
+
+======Commands for Scripts======
+The following commands are available within myjaphoo scripts. For more understanding have also a look
+into the source file [[MJScriptBaseClass.java|MJScriptBaseClass]] which is the groovy base class which implements the commands.
+
+
+
+
+
+ ====Query====
+ Executes a filter language query and returns all matching entries.
+
+ @param filterExpression
+ @return
+ @throws ParserException
+
+
+
+
+
+ ====movies====
+ Returns all movies as a list of MovieEntry objects from the cache.
+ <p/>
+ @return all movie entries
+
+
+
+
+ ====tags====
+ Returns all tags as a list of Token objects from the cache.
+ @return
+
+
+
+
+ ====metaTags====
+ Returns all metatags as a list of MetaToken objects from the cache.
+

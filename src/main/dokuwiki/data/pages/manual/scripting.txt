@@ -1,0 +1,47 @@
+
+======Scripting======
+
+Since 3.9. groovy is heavily integrated into the application. You can define groovy scripts to manually be executed, or define scripts to run during application start. With this you are able to extend the functionality and user interface of the application.
+
+What you can do is
+
+  * define additional menu points (actions)
+  * define additional filter and grouping functions
+  * batch scripts to manipulate the database content
+  * 
+
+
+You can open scripts in the Scripting Menu. A groovy console opens where you can directly edit the script or execute the script. You can save the script with File->Save in Database. 
+
+==== Groovy Scripts ====
+
+Scripts are organized in the scripts panel. Here you see all available scripts of the myjaphoo database. You can create new ones, edit or delete existing ones.
+With the type field you can set a script to be executed on the startup of the application.
+
+You can group scripts in sub menus. There is a field menuPath where you can put in a menu path where the script should appear. You can use ”/” to build sub-menus. E.g. if you set a menupath “mygroup/mysubgroup” the script will be placed in submenu mysubgroup under mygroup. 
+
+
+==== Groovy Filter and Grouping Functions ====
+TODO
+=== Filter with Groovy ===
+TODO
+=== Grouping with Groovy ===
+TODO
+=== Using defined Groovy Functions in the Filter and Grouping Language ===
+
+TODO 
+
+== Contexts to save state relevant information for a filter or grouping action ==
+
+TODO
+==== Definig Actions with Groovy ====
+TODO
+
+
+
+
+
+
+
+
+

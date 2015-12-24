@@ -1,0 +1,10 @@
+
+======Media Tree======
+
+{{ :documentation_html_7260ec4.png |Media Tree}}
+
+
+The media tree contains all your media files in your collection and displays them in a tree structure. The structure by which the files are grouped could be changed, the default is the grouping by the directory structure. If you click on a node in the tree, the files underneath this node will be displayed in the thumbs view. Only the direct children will be displayed at default. If you want to display ALL files (all children of children, too) you have to click the "List children" checkbox. 
+
+You could filter (respectively "condense") duplicates so that they appear only once by clicking the "condense dups" checkbox.
+

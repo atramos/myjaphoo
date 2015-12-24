@@ -1,0 +1,317 @@
+====== Exif Identifiers ======
+
+^Exif Identifier^Type^Description^
+ | exif_active_area | TEXT | exif tag Active Area |
+ | exif_afcp__iptc | TEXT | exif tag AFCP_ IPTC |
+ | exif_alias_layer_metadata | TEXT | exif tag Alias Layer Metadata |
+ | exif_alpha_byte_count | TEXT | exif tag Alpha Byte Count |
+ | exif_alpha_data_discard | TEXT | exif tag Alpha Data Discard |
+ | exif_alpha_offset | TEXT | exif tag Alpha Offset |
+ | exif_analog_balance | TEXT | exif tag Analog Balance |
+ | exif_annotations | TEXT | exif tag Annotations |
+ | exif_anti_alias_strength | TEXT | exif tag Anti Alias Strength |
+ | exif_aperture_value | TEXT | exif tag Aperture Value |
+ | exif_application_notes | TEXT | exif tag Application Notes |
+ | exif_artist | TEXT | exif tag Artist |
+ | exif_as_shot_iccprofile | TEXT | exif tag As Shot ICCProfile |
+ | exif_as_shot_neutral | TEXT | exif tag As Shot Neutral |
+ | exif_as_shot_pre_profile_matrix | TEXT | exif tag As Shot Pre Profile Matrix |
+ | exif_as_shot_white_xy | TEXT | exif tag As Shot White XY |
+ | exif_background_color_indicator | TEXT | exif tag Background Color Indicator |
+ | exif_background_color_value | TEXT | exif tag Background Color Value |
+ | exif_bad_fax_lines | TEXT | exif tag Bad Fax Lines |
+ | exif_baseline_exposure | TEXT | exif tag Baseline Exposure |
+ | exif_baseline_noise | TEXT | exif tag Baseline Noise |
+ | exif_baseline_sharpness | TEXT | exif tag Baseline Sharpness |
+ | exif_battery_level | TEXT | exif tag Battery Level |
+ | exif_bayer_green_split | TEXT | exif tag Bayer Green Split |
+ | exif_best_quality_scale | TEXT | exif tag Best Quality Scale |
+ | exif_bits_per_extended_run_length | TEXT | exif tag Bits Per Extended Run Length |
+ | exif_bits_per_run_length | TEXT | exif tag Bits Per Run Length |
+ | exif_bits_per_sample | TEXT | exif tag Bits Per Sample |
+ | exif_black_level | TEXT | exif tag Black Level |
+ | exif_black_level_delta_h | TEXT | exif tag Black Level Delta H |
+ | exif_black_level_delta_v | TEXT | exif tag Black Level Delta V |
+ | exif_black_level_repeat_dim | TEXT | exif tag Black Level Repeat Dim |
+ | exif_brightness | TEXT | exif tag Brightness |
+ | exif_brightness_value | TEXT | exif tag Brightness Value |
+ | exif_calibration_illuminant_1 | TEXT | exif tag Calibration Illuminant 1 |
+ | exif_calibration_illuminant_2 | TEXT | exif tag Calibration Illuminant 2 |
+ | exif_camera_calibration_1 | TEXT | exif tag Camera Calibration 1 |
+ | exif_camera_calibration_2 | TEXT | exif tag Camera Calibration 2 |
+ | exif_camera_serial_number | TEXT | exif tag Camera Serial Number |
+ | exif_cell_length | TEXT | exif tag Cell Length |
+ | exif_cell_width | TEXT | exif tag Cell Width |
+ | exif_cfalayout | TEXT | exif tag CFALayout |
+ | exif_cfapattern | TEXT | exif tag CFAPattern |
+ | exif_cfapattern_2 | TEXT | exif tag CFAPattern 2 |
+ | exif_cfaplane_color | TEXT | exif tag CFAPlane Color |
+ | exif_cfarepeat_pattern_dim | TEXT | exif tag CFARepeat Pattern Dim |
+ | exif_chroma_blur_radius | TEXT | exif tag Chroma Blur Radius |
+ | exif_clean_fax_data | TEXT | exif tag Clean Fax Data |
+ | exif_clip_path | TEXT | exif tag Clip Path |
+ | exif_coding_methods | TEXT | exif tag Coding Methods |
+ | exif_color_characterization | TEXT | exif tag Color Characterization |
+ | exif_color_map | TEXT | exif tag Color Map |
+ | exif_color_matrix_1 | TEXT | exif tag Color Matrix 1 |
+ | exif_color_matrix_2 | TEXT | exif tag Color Matrix 2 |
+ | exif_color_response_unit | TEXT | exif tag Color Response Unit |
+ | exif_color_sequence | TEXT | exif tag Color Sequence |
+ | exif_color_space | TEXT | exif tag Color Space |
+ | exif_color_table | TEXT | exif tag Color Table |
+ | exif_components_configuration | TEXT | exif tag Components Configuration |
+ | exif_compressed_bits_per_pixel | TEXT | exif tag Compressed Bits Per Pixel |
+ | exif_compression | TEXT | exif tag Compression |
+ | exif_consecutive_bad_fax_lines | TEXT | exif tag Consecutive Bad Fax Lines |
+ | exif_contrast | TEXT | exif tag Contrast |
+ | exif_converter | TEXT | exif tag Converter |
+ | exif_copyright | TEXT | exif tag Copyright |
+ | exif_create_date | DATE | exif tag Create Date |
+ | exif_current_iccprofile | TEXT | exif tag Current ICCProfile |
+ | exif_current_pre_profile_matrix | TEXT | exif tag Current Pre Profile Matrix |
+ | exif_custom_rendered | TEXT | exif tag Custom Rendered |
+ | exif_data_type | TEXT | exif tag Data Type |
+ | exif_date_time_original | TEXT | exif tag Date Time Original |
+ | exif_decode | TEXT | exif tag Decode |
+ | exif_default_crop_origin | TEXT | exif tag Default Crop Origin |
+ | exif_default_crop_size | TEXT | exif tag Default Crop Size |
+ | exif_default_image_color | TEXT | exif tag Default Image Color |
+ | exif_default_scale | TEXT | exif tag Default Scale |
+ | exif_device_setting_description | TEXT | exif tag Device Setting Description |
+ | exif_digital_zoom_ratio | TEXT | exif tag Digital Zoom Ratio |
+ | exif_dng_adobe_data | TEXT | exif tag DNG Adobe Data |
+ | exif_dng_backward_version | TEXT | exif tag DNG Backward Version |
+ | exif_dng_lens_info | TEXT | exif tag DNG Lens Info |
+ | exif_dng_pentax_data | TEXT | exif tag DNG Pentax Data |
+ | exif_dng_private_data | TEXT | exif tag DNG Private Data |
+ | exif_dng_version | TEXT | exif tag DNG Version |
+ | exif_document_name | TEXT | exif tag Document Name |
+ | exif_dot_range | TEXT | exif tag Dot Range |
+ | exif_exif_image_length | TEXT | exif tag Exif Image Length |
+ | exif_exif_image_width | TEXT | exif tag Exif Image Width |
+ | exif_exif_offset | TEXT | exif tag Exif Offset |
+ | exif_exif_version | TEXT | exif tag Exif Version |
+ | exif_exposure | TEXT | exif tag Exposure |
+ | exif_exposure_compensation | TEXT | exif tag Exposure Compensation |
+ | exif_exposure_index | TEXT | exif tag Exposure Index |
+ | exif_exposure_mode | TEXT | exif tag Exposure Mode |
+ | exif_exposure_program | TEXT | exif tag Exposure Program |
+ | exif_exposure_time | TEXT | exif tag Exposure Time |
+ | exif_extra_samples | TEXT | exif tag Extra Samples |
+ | exif_fax_profile | TEXT | exif tag Fax Profile |
+ | exif_fax_recv_params | TEXT | exif tag Fax Recv Params |
+ | exif_fax_recv_time | TEXT | exif tag Fax Recv Time |
+ | exif_fax_sub_address | TEXT | exif tag Fax Sub Address |
+ | exif_file_source | TEXT | exif tag File Source |
+ | exif_fill_order | TEXT | exif tag Fill Order |
+ | exif_flash | TEXT | exif tag Flash |
+ | exif_flash_energy | TEXT | exif tag Flash Energy |
+ | exif_flashpix_version | TEXT | exif tag Flashpix Version |
+ | exif_fnumber | TEXT | exif tag FNumber |
+ | exif_focal_length | TEXT | exif tag Focal Length |
+ | exif_focal_length_in_3_5mm_format | TEXT | exif tag Focal Length In 3 5mm Format |
+ | exif_focal_plane_resolution_unit | TEXT | exif tag Focal Plane Resolution Unit |
+ | exif_focal_plane_xresolution | TEXT | exif tag Focal Plane XResolution |
+ | exif_focal_plane_yresolution | TEXT | exif tag Focal Plane YResolution |
+ | exif_free_byte_counts | TEXT | exif tag Free Byte Counts |
+ | exif_free_offsets | TEXT | exif tag Free Offsets |
+ | exif_gain_control | TEXT | exif tag Gain Control |
+ | exif_gamma | TEXT | exif tag Gamma |
+ | exif_gdalmetadata | TEXT | exif tag GDALMetadata |
+ | exif_gdalno_data | TEXT | exif tag GDALNo Data |
+ | exif_geo_tiff_ascii_params | TEXT | exif tag Geo Tiff Ascii Params |
+ | exif_geo_tiff_directory | TEXT | exif tag Geo Tiff Directory |
+ | exif_geo_tiff_double_params | TEXT | exif tag Geo Tiff Double Params |
+ | exif_global_parameters_ifd | TEXT | exif tag Global Parameters IFD |
+ | exif_gpsinfo | TEXT | exif tag GPSInfo |
+ | exif_gray_response_curve | TEXT | exif tag Gray Response Curve |
+ | exif_gray_response_unit | TEXT | exif tag Gray Response Unit |
+ | exif_halftone_hints | TEXT | exif tag Halftone Hints |
+ | exif_hcusage | TEXT | exif tag HCUsage |
+ | exif_height_resolution | TEXT | exif tag Height Resolution |
+ | exif_host_computer | TEXT | exif tag Host Computer |
+ | exif_icc__profile | TEXT | exif tag ICC_ Profile |
+ | exif_image_byte_count | TEXT | exif tag Image Byte Count |
+ | exif_image_color_indicator | TEXT | exif tag Image Color Indicator |
+ | exif_image_color_value | TEXT | exif tag Image Color Value |
+ | exif_image_data_discard | TEXT | exif tag Image Data Discard |
+ | exif_image_depth | TEXT | exif tag Image Depth |
+ | exif_image_description | TEXT | exif tag Image Description |
+ | exif_image_height | TEXT | exif tag Image Height |
+ | exif_image_history | TEXT | exif tag Image History |
+ | exif_image_id | TEXT | exif tag Image ID |
+ | exif_image_layer | TEXT | exif tag Image Layer |
+ | exif_image_number | TEXT | exif tag Image Number |
+ | exif_image_offset | TEXT | exif tag Image Offset |
+ | exif_image_source_data | TEXT | exif tag Image Source Data |
+ | exif_image_type | TEXT | exif tag Image Type |
+ | exif_image_unique_id | TEXT | exif tag Image Unique ID |
+ | exif_image_width | TEXT | exif tag Image Width |
+ | exif_indexed | TEXT | exif tag Indexed |
+ | exif_ink_names | TEXT | exif tag Ink Names |
+ | exif_ink_set | TEXT | exif tag Ink Set |
+ | exif_intergraph_flag_registers | TEXT | exif tag Intergraph Flag Registers |
+ | exif_intergraph_matrix | TEXT | exif tag Intergraph Matrix |
+ | exif_intergraph_packet_data | TEXT | exif tag Intergraph Packet Data |
+ | exif_interlace | TEXT | exif tag Interlace |
+ | exif_interop_index | TEXT | exif tag Interop Index |
+ | exif_interop_offset | TEXT | exif tag Interop Offset |
+ | exif_interop_version | TEXT | exif tag Interop Version |
+ | exif_iptc-_naa | TEXT | exif tag IPTC- NAA |
+ | exif_iso | TEXT | exif tag ISO |
+ | exif_it8_header | TEXT | exif tag IT8 Header |
+ | exif_jpegactables | TEXT | exif tag JPEGACTables |
+ | exif_jpegdctables | TEXT | exif tag JPEGDCTables |
+ | exif_jpeglossless_predictors | TEXT | exif tag JPEGLossless Predictors |
+ | exif_jpegpoint_transforms | TEXT | exif tag JPEGPoint Transforms |
+ | exif_jpegproc | TEXT | exif tag JPEGProc |
+ | exif_jpegqtables | TEXT | exif tag JPEGQTables |
+ | exif_jpegrestart_interval | TEXT | exif tag JPEGRestart Interval |
+ | exif_jpegtables | TEXT | exif tag JPEGTables |
+ | exif_jpg_from_raw_length | TEXT | exif tag Jpg From Raw Length |
+ | exif_jpg_from_raw_start | TEXT | exif tag Jpg From Raw Start |
+ | exif_leaf_data | TEXT | exif tag Leaf Data |
+ | exif_leaf_sub_ifd | TEXT | exif tag Leaf Sub IFD |
+ | exif_lens | TEXT | exif tag Lens |
+ | exif_light_source | TEXT | exif tag Light Source |
+ | exif_linear_response_limit | TEXT | exif tag Linear Response Limit |
+ | exif_linearization_table | TEXT | exif tag Linearization Table |
+ | exif_localized_camera_model | TEXT | exif tag Localized Camera Model |
+ | exif_make | TEXT | exif tag Make |
+ | exif_maker_note | TEXT | exif tag Maker Note |
+ | exif_maker_note_safety | TEXT | exif tag Maker Note Safety |
+ | exif_masked_areas | TEXT | exif tag Masked Areas |
+ | exif_matteing | TEXT | exif tag Matteing |
+ | exif_max_aperture_value | TEXT | exif tag Max Aperture Value |
+ | exif_max_sample_value | TEXT | exif tag Max Sample Value |
+ | exif_mdcolor_table | TEXT | exif tag MDColor Table |
+ | exif_mdfile_tag | TEXT | exif tag MDFile Tag |
+ | exif_mdfile_units | TEXT | exif tag MDFile Units |
+ | exif_mdlab_name | TEXT | exif tag MDLab Name |
+ | exif_mdprep_date | TEXT | exif tag MDPrep Date |
+ | exif_mdprep_time | TEXT | exif tag MDPrep Time |
+ | exif_mdsample_info | TEXT | exif tag MDSample Info |
+ | exif_mdscale_pixel | TEXT | exif tag MDScale Pixel |
+ | exif_metering_mode | TEXT | exif tag Metering Mode |
+ | exif_min_sample_value | TEXT | exif tag Min Sample Value |
+ | exif_mode_number | TEXT | exif tag Mode Number |
+ | exif_model | TEXT | exif tag Model |
+ | exif_model_2 | TEXT | exif tag Model 2 |
+ | exif_model_tie_point | TEXT | exif tag Model Tie Point |
+ | exif_model_transform | TEXT | exif tag Model Transform |
+ | exif_modify_date | TEXT | exif tag Modify Date |
+ | exif_moire_filter | TEXT | exif tag Moire Filter |
+ | exif_noise | TEXT | exif tag Noise |
+ | exif_numberof_inks | TEXT | exif tag Numberof Inks |
+ | exif_oce_application_selector | TEXT | exif tag Oce Application Selector |
+ | exif_oce_idnumber | TEXT | exif tag Oce IDNumber |
+ | exif_oce_image_logic | TEXT | exif tag Oce Image Logic |
+ | exif_oce_scanjob_desc | TEXT | exif tag Oce Scanjob Desc |
+ | exif_offset_schema | TEXT | exif tag Offset Schema |
+ | exif_old_subfile_type | TEXT | exif tag Old Subfile Type |
+ | exif_opiproxy | TEXT | exif tag OPIProxy |
+ | exif_opto_-_electric_conv_factor | TEXT | exif tag Opto - Electric Conv Factor |
+ | exif_orientation | TEXT | exif tag Orientation |
+ | exif_original_raw_file_data | TEXT | exif tag Original Raw File Data |
+ | exif_original_raw_file_name | TEXT | exif tag Original Raw File Name |
+ | exif_other_image_length | TEXT | exif tag Other Image Length |
+ | exif_other_image_start | TEXT | exif tag Other Image Start |
+ | exif_owner_name | TEXT | exif tag Owner Name |
+ | exif_page_name | TEXT | exif tag Page Name |
+ | exif_page_number | TEXT | exif tag Page Number |
+ | exif_photometric_interpretation | TEXT | exif tag Photometric Interpretation |
+ | exif_photoshop_settings | TEXT | exif tag Photoshop Settings |
+ | exif_pixel_format | TEXT | exif tag Pixel Format |
+ | exif_pixel_intensity_range | TEXT | exif tag Pixel Intensity Range |
+ | exif_pixel_scale | TEXT | exif tag Pixel Scale |
+ | exif_planar_configuration | TEXT | exif tag Planar Configuration |
+ | exif_predictor | TEXT | exif tag Predictor |
+ | exif_preview_image_length | TEXT | exif tag Preview Image Length |
+ | exif_preview_image_start | TEXT | exif tag Preview Image Start |
+ | exif_primary_chromaticities | TEXT | exif tag Primary Chromaticities |
+ | exif_print_im | TEXT | exif tag Print IM |
+ | exif_processing_software | TEXT | exif tag Processing Software |
+ | exif_profile_type | TEXT | exif tag Profile Type |
+ | exif_raster_padding | TEXT | exif tag Raster Padding |
+ | exif_rating | TEXT | exif tag Rating |
+ | exif_rating_percent | TEXT | exif tag Rating Percent |
+ | exif_raw_data_unique_id | TEXT | exif tag Raw Data Unique ID |
+ | exif_raw_file | TEXT | exif tag Raw File |
+ | exif_reduction_matrix_1 | TEXT | exif tag Reduction Matrix 1 |
+ | exif_reduction_matrix_2 | TEXT | exif tag Reduction Matrix 2 |
+ | exif_reference_black_white | TEXT | exif tag Reference Black White |
+ | exif_related_image_file_format | TEXT | exif tag Related Image File Format |
+ | exif_related_image_length | TEXT | exif tag Related Image Length |
+ | exif_related_image_width | TEXT | exif tag Related Image Width |
+ | exif_related_sound_file | TEXT | exif tag Related Sound File |
+ | exif_resolution_unit | TEXT | exif tag Resolution Unit |
+ | exif_rows_per_strip | TEXT | exif tag Rows Per Strip |
+ | exif_sample_format | TEXT | exif tag Sample Format |
+ | exif_samples_per_pixel | TEXT | exif tag Samples Per Pixel |
+ | exif_saturation | TEXT | exif tag Saturation |
+ | exif_scene_capture_type | TEXT | exif tag Scene Capture Type |
+ | exif_scene_type | TEXT | exif tag Scene Type |
+ | exif_security_classification | TEXT | exif tag Security Classification |
+ | exif_self_timer_mode | TEXT | exif tag Self Timer Mode |
+ | exif_seminfo | TEXT | exif tag SEMInfo |
+ | exif_sensing_method | TEXT | exif tag Sensing Method |
+ | exif_serial_number | TEXT | exif tag Serial Number |
+ | exif_shadow_scale | TEXT | exif tag Shadow Scale |
+ | exif_shadows | TEXT | exif tag Shadows |
+ | exif_sharpness | TEXT | exif tag Sharpness |
+ | exif_shutter_speed_value | TEXT | exif tag Shutter Speed Value |
+ | exif_site | TEXT | exif tag Site |
+ | exif_smax_sample_value | TEXT | exif tag SMax Sample Value |
+ | exif_smin_sample_value | TEXT | exif tag SMin Sample Value |
+ | exif_smoothness | TEXT | exif tag Smoothness |
+ | exif_software | TEXT | exif tag Software |
+ | exif_spatial_frequency_response | TEXT | exif tag Spatial Frequency Response |
+ | exif_spectral_sensitivity | TEXT | exif tag Spectral Sensitivity |
+ | exif_sto_nits | TEXT | exif tag Sto Nits |
+ | exif_strip_row_counts | TEXT | exif tag Strip Row Counts |
+ | exif_sub_ifd | TEXT | exif tag Sub IFD |
+ | exif_sub_sec_time | TEXT | exif tag Sub Sec Time |
+ | exif_sub_sec_time_digitized | TEXT | exif tag Sub Sec Time Digitized |
+ | exif_sub_sec_time_original | TEXT | exif tag Sub Sec Time Original |
+ | exif_subfile_type | TEXT | exif tag Subfile Type |
+ | exif_subject_distance | TEXT | exif tag Subject Distance |
+ | exif_subject_distance_range | TEXT | exif tag Subject Distance Range |
+ | exif_subject_location | TEXT | exif tag Subject Location |
+ | exif_t4_options | TEXT | exif tag T4 Options |
+ | exif_t6_options | TEXT | exif tag T6 Options |
+ | exif_target_printer | TEXT | exif tag Target Printer |
+ | exif_thresholding | TEXT | exif tag Thresholding |
+ | exif_tiff-_epstandard_id | TEXT | exif tag TIFF- EPStandard ID |
+ | exif_tile_byte_counts | TEXT | exif tag Tile Byte Counts |
+ | exif_tile_depth | TEXT | exif tag Tile Depth |
+ | exif_tile_length | TEXT | exif tag Tile Length |
+ | exif_tile_offsets | TEXT | exif tag Tile Offsets |
+ | exif_tile_width | TEXT | exif tag Tile Width |
+ | exif_time_zone_offset | TEXT | exif tag Time Zone Offset |
+ | exif_transfer_function | TEXT | exif tag Transfer Function |
+ | exif_transfer_range | TEXT | exif tag Transfer Range |
+ | exif_transfomation | TEXT | exif tag Transfomation |
+ | exif_transparency_indicator | TEXT | exif tag Transparency Indicator |
+ | exif_uncompressed | TEXT | exif tag Uncompressed |
+ | exif_unique_camera_model | TEXT | exif tag Unique Camera Model |
+ | exif_usercomment | TEXT | exif tag UserComment |
+ | exif_version_year | TEXT | exif tag Version Year |
+ | exif_wang_annotation | TEXT | exif tag Wang Annotation |
+ | exif_white_balance | TEXT | exif tag White Balance |
+ | exif_white_level | TEXT | exif tag White Level |
+ | exif_white_point | TEXT | exif tag White Point |
+ | exif_width_resolution | TEXT | exif tag Width Resolution |
+ | exif_xclip_path_units | TEXT | exif tag XClip Path Units |
+ | exif_xpauthor | TEXT | exif tag XPAuthor |
+ | exif_xpcomment | TEXT | exif tag XPComment |
+ | exif_xpkeywords | TEXT | exif tag XPKeywords |
+ | exif_xposition | TEXT | exif tag XPosition |
+ | exif_xpsubject | TEXT | exif tag XPSubject |
+ | exif_xptitle | TEXT | exif tag XPTitle |
+ | exif_xresolution | TEXT | exif tag XResolution |
+ | exif_ycbcr_coefficients | TEXT | exif tag YCbCr Coefficients |
+ | exif_ycbcr_positioning | TEXT | exif tag YCbCr Positioning |
+ | exif_ycbcr_sub_sampling | TEXT | exif tag YCbCr Sub Sampling |
+ | exif_yclip_path_units | TEXT | exif tag YClip Path Units |
+ | exif_yposition | TEXT | exif tag YPosition |
+ | exif_yresolution | TEXT | exif tag YResolution |

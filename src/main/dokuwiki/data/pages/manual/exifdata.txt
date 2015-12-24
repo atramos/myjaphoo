@@ -1,0 +1,53 @@
+
+
+======Exif Data======
+
+
+{{ :09exifinfoview.png |}}
+
+
+MyJaPhoO extracts and shows the exif data which is saved in picture files. You can see all the defined exif tags when you select one picture. All the tags are listed in the Info Panel under the EXIF tree. The EXIF tree contains the exif data which has been extracted and saved in the MyJaPhoO database, whereas the EXIF(Live) tree contains the ad hoc extracted tags. This will be mostly the same data, but could in general differ, if e.g. the tags have been changed in the picture.
+
+
+
+You could use the extracted exif data in the same way as all the other media attributes, means, you could use them in filter expressions or use them to group the media files. E.g. there is a predefined grouping to group the files by the exif create date. 
+
+Exif attributes which are used in filter or group by expressions always start with the prefix exif_ followed by the exif tag name. The full list of available exif tags is available here: [[manual:exifidentifiers|Exif Identifiers]]
+
+
+
+Examples:
+
+
+
+Filter:
+
+
+
+''exif_create_date > "01/01/2000"''
+
+
+
+This filters to all medias, which have a create date after the first january 2000.
+
+
+
+Grouping:
+
+
+
+''exif_make, exif_model ''
+
+
+
+This groups the media by the exif make tag, with sub-grouping by the exif model
+
+
+
+''(if exif_make like kodak {"My Photos"} elseif exif_make like sony {"Jims Photos"} else {"unknown photographer"})''
+
+
+
+This groups by different photographers which are determined by the camera make.
+
+

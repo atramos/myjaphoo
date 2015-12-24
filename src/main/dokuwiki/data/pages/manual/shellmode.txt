@@ -1,0 +1,46 @@
+====== Shell Mode ======
+
+Starting with version 3.10 the application could also be used in batch mode and in shell mode.
+
+This starts the application in interactive shell mode.
+<code>
+run.bat -i
+</code>
+The application will start a groovysh console and you can interact with the application by executing commands.
+
+====== Shell Commands ======
+
+===== Statistics =====
+<code>
+statistics
+</code>
+will print out some basic statistics about the current used database.
+
+===== Import =====
+<code>
+imp <mode> <dir>
+</code>
+will start a media entry import from a given directory. 
+Mode: Picture or Movie
+dir: path to the directory where the media is
+
+
+
+===== Batch Mode =====
+
+You can also simply execute one command. This is helpful to e.g. write own batch scripts e.g. to import/update perodically. Therefore simply execute run.bat and append the command, e.g.:
+
+<code>
+run.bat imp Pictures c:\myDirWithPictures
+</code>
+
+will import/update the database with the media files in the given directory and the application stops after the import finished.
+
+Example: import new files in a loop with a batch script:
+
+<code>
+:loop
+call run.bat imp Pictures c:\myDirWithPictures
+timeout /T 600 
+goto loop
+</code>

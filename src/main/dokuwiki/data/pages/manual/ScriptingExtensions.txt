@@ -1,0 +1,78 @@
+
+===== ConfigurableThumbLoader =====
+This is an extension to plug in additional thumb loader logic.
+Multiple such loaders could be registered in the application.
+They are then tried out in sequence till the first one returns a requested thumb.
+
+==== Interface ====
+
+The following interface must be implemented:
+
+
+
+<code java>
+ package org.myjaphoo.gui.util;
+
+import org.myjaphoo.gui.ThumbTypeDisplayMode;
+
+import java.awt.image.BufferedImage;
+
+/**
+ * ConfigurableThumbLoader
+ * @author lang
+ * @version $Id$
+ */
+public interface ConfigurableThumbLoader {
+
+    /**
+     * Try to load a thumb nail. If its not possible for this thumb loader it should return null, which
+     * indicates to try out the next configured thumb loader.
+     * @param movieId
+     * @param column
+     * @param mode
+     * @return
+     */
+    BufferedImage load(long movieId, int column, ThumbTypeDisplayMode mode);
+}
+ </code>
+
+
+
+
+
+
+===== ConfigurableFileSubstitution =====
+This is an extension to plug in additional file substitution logic.
+Multiple configurable file substitutors could be registered in the application.
+If a path could not be localized, the configured substitutors are tried out in sequence until the first returns
+a path.
+
+==== Interface ====
+
+The following interface must be implemented:
+
+
+
+<code java>
+ package org.myjaphoo.model.logic;
+
+/**
+ * ConfigurableFileSubstitution
+ * @author lang
+ * @version $Id$
+ */
+public interface ConfigurableFileSubstitution {
+
+    /**
+     * Try to locate a file. If it is not possible then returns null, which indicates to try out the
+     * next configurable file substitution.
+     * @param canonicalPath canonical path of this entry.
+     * @return  the located file path on the file system or null
+     */
+    String locateFileOnDrive(String canonicalPath);
+
+}
+ </code>
+
+
+

@@ -1,0 +1,6 @@
+====== Path Substitutions ======
+
+If you are in the situation that the file pathes of your media files are accessible on multiple locations, e.g. you have a multi book drive or use backup drives which contain the same files, you are able to define path substitutions so that they could be mapped and find by myjaphoo.
+
+TODO picture/example
+

@@ -1,0 +1,6 @@
+
+======Chronic======
+
+
+
+The application saves all previously used filter groupings. You can see them in the Chronic Menu or the Chronic Panel. You can switch back to a previously chronic entry by clicking on the respective chronic entry.

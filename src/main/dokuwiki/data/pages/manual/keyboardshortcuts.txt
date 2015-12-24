@@ -1,0 +1,13 @@
+====== Keyboard Shortcuts ======
+
+There are a view short cuts defined for the thumb view
+
+^ shortcut   ^ Component                                                                                     ^ Description                                                           ^
+| alt-n      | Thumbs                                                                                        | opens Dialog to assign a new tag to the selected thumbs               |
+| alt-a      | Thumbs                                                                                        | opens Dialog to assgn an existing (or new) tag to the selected thumbs |
+| alt-d      | Thumbs                                                                                        | delete the selected thumbs                                            |
+| delete key | Thumbs                                                                                        | delete the selected thumbs                                            |
+| backspace  | Thumbs                                                                                        | delete the selected thumbs                                            |
+| alt-r      | Thumbs                                                                                        | remove tag relation from the selected thumbs                          |
+| strg-f     | all lists, all tables, e.g. thumbs, tags, metatags, media tree, chronic, changelog, bookmarks | opens search dialog to search by string                               |
+| strg-a     | Thumbs, or lists, tables                                                                      | select all of the entries                                                                      |

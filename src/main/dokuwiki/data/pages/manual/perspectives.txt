@@ -1,0 +1,6 @@
+
+======Perspectives======
+
+
+
+The GUI is divided into several panels (sometimes called "views"). You could move this panels around by dragging on the title. You could close panels which you do note need and freely arrange the panels according to your needs. There are several predefined arrangements which are called "perspectives". You can choose a perspective in the Windows menu. You could also create your own perspectives by arranging the panels and then clicking "Windows->save Window as Perspective".

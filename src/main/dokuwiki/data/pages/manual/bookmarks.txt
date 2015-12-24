@@ -1,0 +1,42 @@
+
+======Bookmarks======
+
+Bookmarks are an easy way to save the current filter and group by expressions. You can then later easily switch to the same filter/group constellation by clicking a saved bookmark. There is a bookmark menu where you can create a new bookmark or select an existing one to switch back to its filter/grouping.
+
+===== Bookmark Menu =====
+
+With the bookmark menu you can create a new bookmark or select an existing one.
+
+  * add bookmark: this will create a new bookmark based on the current filter and grouping settings. You can add a name to save the bookmark. After that the bookmark is available under this name
+  * Select a bookmark: the menu contains a list with all existing bookmarks. Klicking on one will set the filter and grouping settings of that bookmark and refresh the media tree and the thumb view
+
+
+{{ :10bookmarkmenus.png |}}
+
+===== Bookmark Panel =====
+
+
+{{ :11bookmarkpanel.png |}}
+
+
+There is also a Bookmarks Panel where you can see a complete list with all existing bookmarks. This makes it easier to search for a bookmark. The panel contains following functions
+
+  * order the table by clicking on a header
+  * filter the table by one of the attributes: just enter a filter text below a header column
+  * double click will select the bookmark
+  * edit the bookmark:
+    * you can edit the attributes directly in the table. You can edit the name, the description, the filter and the grouping expression. When you edit the filter or grouping column you have syntax highlighting, code completion and you get markers for errors the same way as in the regular editor fields
+    * play around with filter and groupings. If you want to update a bookmark to the apropriate settings, select the bookmark and click on "Update"
+  * "show": the same as double click: this will select the bookmark
+  * "show on new view": this will open a new view and select the selected bookmark
+  * "refresh": updates the list of bookmarks. This may be necessary, if the application itself was not able to update the list
+  * "delete": this will delete the selected bookmark. You have to confirm the deletion
+
+===== Bookmark Bar =====
+
+There is also a bookmark bar below the main menu which lists all bookmarks. This is to quick select a bookmark with one click.
+
+===== Bookmark Submenus =====
+
+You can order the bookmarks in sub menus. There is a field menuPath where you can put in a menu path where the bookmark should appear. You can use "/" to build sub-menus. E.g. if you set a menupath "mygroup/mysubgroup" the bookmark will be placed in submenu mysubgroup under mygroup.
+

@@ -1,0 +1,20 @@
+====== Constants ======
+
+^Constant^Type^Description^
+ | BAD | NUMBER | 2 |
+ | GOOD | NUMBER | 4 |
+ | MIDDLE | NUMBER | 3 |
+ | NONE | NUMBER | 0 |
+ | VERY_BAD | NUMBER | 1 |
+ | VERY_GOOD | NUMBER | 5 |
+====== Postfixes/Units ======
+
+You could use the following postfixes when using numbers in expressions. They simply multiply the value by the given Unit value 
+
+^Unit Postfix^Factor^
+ | GB | Factor of 1073741824 |
+ | KB | Factor of 1024 |
+ | MB | Factor of 1048576 |
+ | gb | Factor of 1073741824 |
+ | kb | Factor of 1024 |
+ | mb | Factor of 1048576 |

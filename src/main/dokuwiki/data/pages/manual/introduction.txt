@@ -1,0 +1,27 @@
+
+=====What is MyJaPhoO?=====
+
+MyJaPhoO is a java application to organize photo and video collections which are locally saved on your computer. With MyJaPhoO you get structure in your media collection. You can add additional information e.g. tags, meta-tags, titles, comments for files. You have powerful features to search for all the information and you have powerful features to group the results of your search.
+
+
+=====How much does it cost?=====
+
+MyJaPhoO is free software (as in speech) licensed under the GNU GPL license. The GNU GPL license is included in the file COPYING which is distributed along with MyJaPhoO and can also be
+
+read online at http:%%//%%www.gnu.org/copyleft/gpl.html.
+
+
+=====Where can I get it?=====
+
+MyJaPhoO is hosted at sourceforge.org. You can download the latest version under [[http://myjaphoo.sourceforge.net/|http://myjaphoo.sourceforge.net]].
+
+
+
+
+=====I need Help. Whom can I ask?=====
+
+Latest information and news about this project is available at [[http://myjaphoo.de/|http://myjaphoo.de]]. If you have questions or need help, use the forum functions on the home page. You could also directly mail anything related to the project to admin@myjaphoo.de. 
+
+===== Documentation =====
+
+This wiki documentation is by far not complete. If you want to help you could help writing/updating this wiki. 

@@ -1,0 +1,92 @@
+
+<installation version="1.0">
+          <!-- Ant properties in this file can be referenced with @{},
+               otherwise use variables below in installer files with ${} -->
+    <info>
+        <appname>@{project.artifactId}</appname>
+        <appversion>@{project.version}</appversion>
+        <authors>
+            <!--author name="Matt Lang" email="ml@googlemail.com"/-->
+        </authors>
+        <url>http://myjaphoo.sourceforge.net/</url>
+        <javaversion>1.7</javaversion>
+        <requiresjdk>no</requiresjdk>
+        <!--><pack200/>-->
+        <run-privileged condition="izpack.windowsinstall.vista|izpack.windowsinstall.7"/>
+        <summarylogfilepath>$INSTALL_PATH/installinfo/Summary.htm</summarylogfilepath>        
+    </info>
+
+    <!--
+        The gui preferences indication.
+        Sets the installer window to 640x480. It will not be able to change the size.
+    -->
+    <guiprefs width="640" height="480" resizable="yes"/>
+
+    <variables>
+        <variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+        <variable name="ApplicationShortcutPath" value="ApplicationShortcuts"/>
+    </variables>
+
+    <!--
+        The locale section.
+        Asks here to include the English and French langpacks.
+    -->
+    <locale>
+        <langpack iso3="eng"/>
+        <langpack iso3="deu"/>
+        <langpack iso3="fra"/>
+    </locale>
+
+    <!--
+        The resources section.
+        The ids must be these ones if you want to use the LicencePanel and/or the InfoPanel.
+    -->
+    <resources>
+        <res id="LicencePanel.licence" src="gpl-2.0.txt"/>
+        <res id="InfoPanel.info" src="Readme.txt"/>
+        <res id="InfoPanel.info_fra" src="Readme_fra.txt" encoding="UTF-8"/>
+        <res src="shortcutSpec.xml" id="shortcutSpec.xml"/>
+        <res src="Unix_shortcutSpec.xml" id="Unix_shortcutSpec.xml"/>
+    </resources>
+
+    <!--
+        The panels section.
+        We indicate here which panels we want to use. The order will be respected.
+    -->
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="InfoPanel"/>
+        <panel classname="LicencePanel"/>
+        <panel classname="TargetPanel"/>
+        <panel classname="PacksPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="ShortcutPanel"/>
+        <panel classname="FinishPanel"/>
+    </panels>
+
+    <!--
+        The packs section.
+        We specify here our packs.
+    -->
+    <packs>
+        <pack name="Base" required="yes">
+            <description>The base files</description>
+            <file src="Readme.txt" targetdir="$INSTALL_PATH"/>
+            <file src="gpl-2.0.txt" targetdir="$INSTALL_PATH"/>
+            <file src="../@{jar.dir}/lib" targetdir="$INSTALL_PATH"/>
+            <file src="../@{jar.dir}/macros" targetdir="$INSTALL_PATH"/>
+            <file src="../@{jar.dir}/myjaphoo.jar" targetdir="$INSTALL_PATH"/>
+            <file src="../@{jar.dir}/start.jar" targetdir="$INSTALL_PATH"/>    
+            <file src="../@{jar.dir}/appstart.properties" targetdir="$INSTALL_PATH"/>               
+            <file src="../@{jar.dir}/run.bat" targetdir="$INSTALL_PATH"/>
+            <file src="../@{jar.dir}/run.sh" targetdir="$INSTALL_PATH"/>
+            <executable targetfile="$INSTALL_PATH/run.sh" stage="never">
+                <os family="unix"/>
+            </executable>
+        </pack>
+    </packs>
+   <!-- The native libraries to add -->
+    <native type="izpack" name="ShellLink.dll"/>
+    <native type="izpack" name="ShellLink_x64.dll"/>
+
+</installation>

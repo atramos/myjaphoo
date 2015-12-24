@@ -1,0 +1,144 @@
+
+=====Requirements=====
+
+
+
+This software requires Java Runtime Version 1.7 or higher to be installed on your system.
+
+
+
+The software can not handle video media itself and makes therefore usage of other external programs. It needs these programs for the following functions:
+
+  * to generate thumb nails for videos
+  * to extract properties for videos
+  * to play back videos
+  
+Therefore the application needs at least VLC and mplayer to deal correctly with videos. So please take care that those are properly configured when you work with videos.
+
+
+There are some options in the usage of external programs. At the moment the following programs could be used. However this list could change in the future.
+
+  *VLC (to generate thumbs and for playback of videos) for playback optionally mplayer, kplayer
+  *ffmpegthumbnailer: to generate thumbnails for videos
+  *mplayer: to extract properties for videos 
+  *ffmpeg: to generate thumb nails
+
+<note warning>VlC, Myjaphoo and 64bit Systems: If you want to use VLC together with Myjaphoo you need to take care, that you use either 32bit java together with Vlc 32bit or 64bit java together with Vlc 64 bit. Otherwise Myjaphoo will not be able to create thumbnails via Vlc</note>
+
+This software is not bundled with myjaphoo, you have to properly install this programs on your own. Please check the paths of this programs in the options dialog of myjaphoo for correctness.
+
+
+
+
+
+
+
+
+
+
+=====Installation=====
+
+
+
+This software runs on windows as well as on linux or any other platforms that support the java runtime system.
+
+
+
+There are three different files distributed:
+
+
+
+  *myjaphoo-xxx-wininstaller.exe: installer for windows
+  *myjaphoo-xxx-installer.jar: OS independent installer. 
+  *myjaphoo-xxx-os-independent.zip: zipped package with all necessary files
+
+
+
+
+====Windows====
+
+For windows there is an installation exe file you could use to install the program. Just start the installation and follow the instructions. If you have problems with this installer you could also start the OS independent installer. Please note, that you already need Java installed to execute the installer.
+
+
+
+
+====Linux and other platforms====
+
+
+
+There is an OS independent installer (created with izpack) which could be used for installation on windows, linux, unix and mac systems. However the installation is not well tested under linux and especially not on mac systems.
+
+If it does not work properly, please try to use the zip package.
+
+
+
+To start the OS independent installation open a command shell and execute:
+
+
+
+''java -jar myjaphoo-xxx-installer.jar''
+
+
+
+and follow the instructions.
+
+
+
+
+====Zip package====
+
+
+
+If everything else is not appropriate, there is still a zip package which contains all necessary files. Just unzip the file and save the folder under the location you want to run the program.
+
+
+====Start====
+
+
+
+If you have used one of the installer then just click the shortcut to start the program.
+
+However, there are startup script files contained in the package, run.bat for windows and run.sh for linux, which you could use to start the application.
+
+
+
+In general you could start the application by invoking:
+
+
+
+''cd "installation folder"''
+
+''java -jar myjahpoo.jar''
+
+
+
+There is also an additional start.jar which could be used to start the application. This is what the generated operating system shortcuts start. There is a file appstart.properties which contains all additional property information which gets used when starting the application via the start.jar. This is especially relevant when increasing the memory allocation for the application.
+
+
+
+As myjaphoo might need a lot of RAM its often necessary to increase the default memory allocation for java.  The actual memory depends on the size of your picture collection. If you get out of memoy exceptions try to increase the -Xmx parameter.
+
+
+
+The command with increased memory would look like: 
+
+
+
+''java -Xms128M -Xmx800m -XX:PermSize=64M -XX:MaxPermSize=128M  -jar myjaphoo.jar''
+
+
+
+When starting via the shortcuts or via the start.jar you have to change those parameters in the appstart.properties provided in the application installation folder.
+
+<note tip>How much memory is appropriate? Memory consumption depends mainly on the size of the picture collection you have. The larger the collection, the more memory is needed. As guidance: a picture collection with ~ 300000 Pictures should work well with a memory consumption of 3GB (-Xmx3000m).</note>
+
+
+=====Uninstallation=====
+
+There is an uninstaller included. You can uninstall the application via a shortcut from the program menu (note, the shortcut is missing in version < 3.7). 
+You can also manually call the uninstaller by executing
+
+''java -jar <installdir>/Uninstaller/uninstall.jar''
+
+
+

@@ -1,0 +1,25 @@
+====== Functions ======
+
+^Function^Type^Description^
+ | concat | TEXT | concatenates two strings |
+ | count | NUMBER | Aggregate Function to count a group of values |
+ | entryattr | TEXT | returns a user defined attribute value of an entry |
+ | ismov | BOOLEAN | filters files which end by .ts;.mpg;.mpeg;.MPG;.MPEG;.wmv;.avi;.AVI;.mp4;.WMV;.MP4;.iso;.divx;.DIVX;.mkv;.m4v;.f4v;.asf;.mov;.flv;.vob |
+ | ispic | BOOLEAN | filters files which end by .jpg;.jpeg;.png |
+ | istxt | BOOLEAN | filters files which end by .txt;.log;.text |
+ | max | NUMBER | Aggregate Function to aggregate a max over a group of values |
+ | metatagattr | TEXT | returns a user defined attribute value of a tag |
+ | min | NUMBER | Aggregate Function to aggregate a min over a group of values |
+ | regexextract | TEXT | extracts a string by a regex pattern |
+ | removedigits | TEXT | removes all digit characters from the string |
+ | removeletters | TEXT | removes all letter characters from the string |
+ | replaceall | TEXT | replaces a all occurences of string regex expression with another string |
+ | retaindigits | TEXT | removes all non-digit characters from the string |
+ | retainletters | TEXT | removes all non-letter characters from the string |
+ | seq | TEXT | maps a string to a unique number |
+ | split | TEXT | splits a string by a delimiter |
+ | strlen | NUMBER | returns the length of a string value |
+ | subst | BOOLEAN | substitutes a bool expression defined by a bookmark |
+ | sum | NUMBER | Aggregate Function to aggregate a sum over a group of values |
+ | tagattr | TEXT | returns a user defined attribute value of a tag |
+ | tonum | NUMBER | converts a text value into a number |

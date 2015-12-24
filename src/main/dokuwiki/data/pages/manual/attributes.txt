@@ -1,0 +1,39 @@
+====== User Defined Attributes/Properties ======
+
+Since Version 3.9 it is possible to define and save user defined attributes (Properties) on entites. Such attributes could be defined for media entries, for tags and for meta tags.
+User defined attributes consist of a name and an assigned value. You can define as much properties as you want. Only the name must be unique for a entity class. 
+At the moment only text values are supported. 
+
+===== Property Panel =====
+There is a panel which shows all attributes of the selected entity (by selecting either a media entry, a tag or a meta tag). You can then add new property values, edit the existing ones or delete properties.
+
+TODO picture
+
+The property panel shows also all related entities of the selected entity. E.g. if you select a media entry, and it has tags assigned, then also the properties of that tags are listed in the properties panel. Also meta tags assigned to that tags will be listed. This way it is easy to see and edit all properties of all related entites.
+
+TODO picture
+
+===== Filtering and Grouping =====
+User defined attributes are fully supported in the filter and scripting language. They are accessible via functions
+  * entryattr: a function to get an attribute value of a media entry
+  * tagattr: a function to get an attribute value of a tag
+  * metatagattr: a function to get an attribute value of a meta tag
+  
+==== Example ====
+
+<code>
+entryattr(myattrname)
+</code>
+will return the value of the attribute myattrname. Please note, if your attribute names contain special characters e.g. spaces, you need to enclose them in ".
+There is an easier short form of this function call possible using the # symbol:
+<code>
+entryattr#myattrname
+</code>
+
+  
+
+===== Scripting of properties =====
+It is possible to access the properties via groovy scripts. This way you could e.g. write scripts to enrich your archives with properties e.g. from external resources. You could also use this to restructure your existing data.
+
+TODO example
+

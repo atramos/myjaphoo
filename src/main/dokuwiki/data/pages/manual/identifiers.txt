@@ -1,0 +1,43 @@
+====Identifiers====
+
+
+
+There are several so called predefined identifiers available which select attributes from media files for filtering. 
+
+^Identifier^Type^Description^Example^
+|anything|TEXT|all text/string values assigned to a media file|something like "john"|
+|checksum|NUMBER|the checksum of a media file|checksum = 729374232784|
+|comment|TEXT|the comment of a media file|comment like "journey to italy"|
+|diffentry|TEXT|diffentry|diffentry|
+|diffmetatag|TEXT|diffmetatag|diffmetatag|
+|difftag|TEXT|difftag|difftag|
+|dir|TEXT|the directory of a media file|dir like "my-city-tours"|
+|format|TEXT|the format description of a media file|format like jpeg|
+|height|NUMBER|the height of a media file (in pixel)|height > 500|
+|left|NULL|left side of comparison|left.path like blubb|
+|len|NUMBER|the time length of a media file (in seconds)|len > 500|
+|metatag|TEXT|all meta tags of a media file|metatag like "great"|
+|metatagcount|NUMBER|the number of assigned meta tags of a media file|metatagcount > 3|
+|metatagdescr|TEXT|the descriptions of assigned meta tags of a media file|metatagdescr like "very nice"|
+|metatok|TEXT|all meta tags of a media file|metatag like "great"|
+|metatokcount|NUMBER|the number of assigned meta tags of a media file|metatagcount > 3|
+|metatokdescr|TEXT|the descriptions of assigned meta tags of a media file|metatagdescr like "very nice"|
+|name|TEXT|the name of a media file|name like "salamanca"|
+|namewithoutsuffix|TEXT|the name of a media file without suffix|namewithoutsuffix is "hamburg-01.jpg"|
+|parents|TEXT|the parent tags of a media file|tag.parents like "great"|
+|path|TEXT|the full path of a media file|path like "my-city-tours"|
+|rating|NUMBER|the rating of a media file|rating > 3|
+|right|NULL|right side of comparison|right.path like blubb|
+|size|NUMBER|the size of a media file (in bytes)|size < 1MB|
+|something|TEXT|all text/string values assigned to a media file|something like "john"|
+|tag|TEXT|the tags of a media file|tag like italy|
+|tagcount|NUMBER|the number of assigned tags of a media file|tagcount > 3|
+|tagdescr|TEXT|the descriptions of assigned tags of a media file|tagdescr like "john" |
+|tagtype|TEXT|the tag types of the tags assigned to a media file|tagtype is "Actor"|
+|title|TEXT|the title of a media file|title like "My Best Photoshoot"|
+|tok|TEXT|the tags of a media file|tag like italy|
+|tokcount|NUMBER|the number of assigned tags of a media file|tagcount > 3|
+|tokdescr|TEXT|the descriptions of assigned tags of a media file|tagdescr like "john" |
+|toktype|TEXT|the tag types of the tags assigned to a media file|tagtype is "Actor"|
+|width|NUMBER|the width of the media file (in pixel)|width > 800|
+|x|TEXT|all text/string values assigned to a media file|something like "john"|

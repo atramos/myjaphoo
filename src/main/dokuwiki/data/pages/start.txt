@@ -1,0 +1,53 @@
+====== Myjaphoo Documentation ======
+
+This is the documentation wiki for myjaphoo.
+
+
+  * [[manual:Introduction|]]
+  * [[manual:Installation|]]
+  * [[manual:FirstSteps|First Steps]]
+  * [[manual:MediaTree|Media Tree]]
+  * [[manual:ThumbViews|Thumb Views]]
+  * [[manual:Perspectives|]]
+  * [[manual:StructureData|Structure Media Data]]
+  * [[manual:FilteringData|Filtering Media Data]]
+  * [[manual:GroupingData|Grouping Media Data]]
+  * [[manual:ExifData|Exif Data]]
+  * [[manual:Bookmarks|]]
+  * [[manual:Chronic|]]
+  * [[manual:Changelog|]]
+  * [[manual:DatabaseComparison|Database Comparison]]
+  * [[manual:MultipleDatabaseSetup|Multiple Database Setup]]
+  * [[manual:Scripting|]]
+  * [[manual:ShellMode|Batch modes and interactive Shell mode]]
+  * [[manual:KeyboardShortcuts|Keyboard Shortcuts]]
+
+Main page
+
+  * [[http://myjaphoo.de|myjaphoo.de]]
+  
+Issue Tracker
+
+  * [[https://bitbucket.org/myjaphoo/myjaphoo/issues]]
+  
+Forum
+
+  * [[http://sourceforge.net/p/myjaphoo/discussion/]]
+  
+
+Download
+
+  * [[http://sourceforge.net/projects/myjaphoo/files/]]
+   
+Source code
+
+  * [[https://bitbucket.org/myjaphoo/myjaphoo]]
+  
+Contact
+
+  * [[admin@myjaphoo.de]]
+  
+ 
+  
+
+  

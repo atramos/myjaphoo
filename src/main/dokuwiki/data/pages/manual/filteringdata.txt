@@ -1,0 +1,198 @@
+
+======Filtering data======
+
+
+
+
+=====Filter Bricks=====
+
+{{ :3801.png |Filter Bricks}}
+MyJaPhoO has build in a rather complex filter language to filter by any of the assigned attributes of media files. This makes it very powerful, however, quite complex for a new user. It has therefore also a feature to make common filter tasks very easy. 
+
+On Top of the application is a toolbar which contains so called "Filter Bricks". Each brick contains a filter value for a particular identifier. There are default bricks for text search, tag search and bookmark search. You can add additional bricks for other identifiers e.g. for exif tags.
+All the filter of the bricks are combined by a logical "and" function.
+
+  * you can add as many bricks as you want
+  * all bricks are logically "and" combined
+  * the bricks are also logically "and" combined with the filter expression input in the filter editor
+  * all bricks and filter expression could be saved as a bookmark
+  * bricks usually contain a combo box with values as hints that could be used for filtering or as auto completion
+  * you can choose the operator to use for (most) bricks. The default operator is "like"
+  * there is a button "to filter" which produces a filter expression from the current bricks and copies it to the filter editor.
+
+
+
+
+
+
+=====Filter Language=====
+
+
+{{ :06filteroverview.png |}}
+
+
+At the top of the GUI, there is the filter text field. You use this to filter the collection to view only a part of your collection entries. The filter applies to all shown data (means to the media tree and to the thumb view).
+
+The filter text field uses a special syntax to define filter expressions. During input the expression gets validated and you see directly feedback at the right side. The text field on the right side shows any errors that came up when parsing the filter expression. If there is no error, the field is empty.
+
+You can type in an expression and then hit "return" to filter the collection.
+
+
+If you just simply search for a word, you can just type that word in and hit return to do a full text search over all data. If you want to filter by a certain attribute you need to learn a bit about the filter language syntax.
+
+
+The expression syntax lets you define filters on any attributes of the media. You can combine them with "and" and "or", "not"  and brackets to build more sophisticated expressions. So it looks a bit like boolean expressions as in most  computer languages.
+However - there are some shortcuts and special cases to make it easier.
+
+
+
+
+====Auto completion====
+
+The filter text editor field supports auto completion. If you press Ctrl-Space in the editor field an auto completion box opens which helps you and gives you hints how to complete your current expression part.
+
+
+
+
+====Hints on possible Identifiers, Operators with the “I” Button====
+
+
+
+
+
+
+
+When you click on the "i" Button, you get a context menu with a list of all possible identifiers, operators and so on. Clicking on one menu will insert the fragment into the text box.
+
+
+
+
+====Last used filter expressions====
+
+
+
+To easily select previously inputed expressions , you can click on the button left to the info button. You will see a menu with a list of previously selected filter expression. Just click on one to get back to that expression.
+
+ ====Occurrences are highlighted ====
+
+Text occurrences of the words used in filter expressions are automatically highlighted in the media tree and in the property panel. 
+
+====Filter Language Examples====
+
+If you want just to do a full text search over all attributes you can just type in your search word and hit return. E.g. this would just search everything for the occurrence of the word "prada":
+
+<code>
+prada
+</code>
+If you want to search for a phrase you need to enclose in "":
+<code>
+"journey to prada"
+</code>
+
+In general you need to enclose search phrases in "", if they do contain other letters than letters followed by digits.
+
+
+Typically you want to filter by a part of the path name of entries (if you have already structured your media on disk in a useful folder structure)
+
+<code>
+path like "journey to prada"
+</code>
+
+
+would e.g. filter all paths of the entries by the string expression. The word "path" is a [[manual:identifiers|Identifier]] and the "like" is an [[manual:opterators|Operator]]. You can of course combine as many Identifiers and Operators to much more complex filter expressions.
+
+E.g. 
+<code>
+path like usa and tag is nothing
+</code>
+
+
+
+select all paths with usa which have no tag assigned
+
+<code>
+tag is usa and metatag is journey
+</code>
+
+
+
+select all entries which have the tag usa assigned and also the metatag journey.
+
+
+<code>
+tag is TagA|TagB|TagC 
+</code>
+
+
+
+is a short cut for 
+
+<code>
+tag is TagA or tag is TagB or tag is TagC
+</code>
+
+
+<code>
+path like bla&blubb 
+</code>
+
+
+
+is a short cut for 
+
+<code>
+path like bla and path like blubb
+</code>
+
+There are some shortcuts for regex expressions:
+
+<code>
+?.*foo.*
+</code>
+
+is a shortcut for 
+
+<code>
+X ~".*foo.*"
+</code>
+
+which means a regex search over everything containing the word foo.
+As occurrences are searched, not the full pattern this would be simply equivalent to 
+
+<code>
+?foo
+</code>
+
+This could be combined with identifiers to search onyl certain attributes, e.g.:
+
+<code>
+tag?.*foo.*
+</code>
+
+will search for "foo" in all tag names. If you do not need the regex power, you could do simpler searches with e.g.:
+
+<code>
+tag?foo
+</code>
+
+This shortcuts could be used with all identifier.
+
+
+
+
+=====Syntax=====
+
+ The complete EBNF syntax is available here [http://docs.myjaphoo.de/FilterLanguage/index.html.
+
+All available syntactical elements are described in the following sections:
+
+    * [[manual:Identifiers|Identifiers]]
+    * [[manual:ExifIdentifiers|Exif-Identifiers]]
+    * [[manual:Opterators|Operators]]
+    * [[manual:Functions|Functions]]
+    * [[manual:Constants|Constants]]
+
+
+
+
+

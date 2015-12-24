@@ -1,0 +1,62 @@
+
+======Structure Data======
+
+
+
+You can structure your data by adding tags to media entries. This tags could be arranged in a hierarchical structure. You could e.g. build a tag structure like in the following screen:
+
+
+{{ :08tagsview.png |}}
+
+
+
+
+
+
+
+Add a tag:
+
+  *You can create a tag by right click in the tag panel and selecting "create new tag". 
+  * You can click the context menu in the thumbs-window and select "add new tag".
+
+
+
+Structure Tags:
+
+You can build the structure by drag a tag  and drop it on another tag: The dragged tag is then moved as children under the tag where you dropped it.
+
+
+
+Assigning Tags:
+
+You can assign them to media entries by:
+
+  *dragging them on media entries
+  *drag media entries to tags
+  *select media entries and use the context menu. Here are several menus to easily assign tags to entries
+  *Alt-A will open the Tag-Assign Dialog. Here you can search by a text field in a list for an existing tag and assign it to selected media entries.
+
+
+
+Tags can also have a comment and a type.
+
+You can edit a tag name and a comment by double clicking on the respective field in the tag tree.
+
+
+
+You could group the media tree by tags (and metatags). This is very useful when you have your collection well organized with tags and metatags.
+
+
+
+
+
+
+======Adding Metatags======
+
+
+
+There are also so called "MetaTags" which work pretty much the same like tags. The difference is that meta tags can only be assigned to tags whereas tags could be assigned to media files. Metatags are useful when you need to define tag structures in a kind of "orthogonal" way, which would otherwise not always possible in a simple tree. Meta tags assigned to tags are also indirect related to all the entries of assigned tags.
+
+
+
+Metatags could be pretty much the same way used as tags and all the functionality is analogue to tags.

@@ -1,0 +1,100 @@
+
+<project name="myjaphoo" basedir="." default="build.installationfiles">
+
+
+    <property name="src.dir"     value="src/main/java"/>
+    <property name="src.resources.dir"     value="src/main/resources"/>
+    <property name="tst.dir"     value="src/test/java"/>
+    <property name="tst.resources.dir"     value="src/test/resources"/>
+    <property name="build.dir"   value="target"/>
+
+    <property name="jar.dir"     value="${build.dir}/dist"/>
+    <property name="lib.dir"     value="lib"/>
+    <property name="macros.dir"     value="macros"/>
+    <property name="main-class"  value="org.myjaphoo.MyjaphooApp"/>
+
+    <property name="install.dir"     value="installation"/>
+    <property name="install.lib"     value="${install.dir}/lib"/>
+    <property name="install.dest" value="${build.dir}/installation"/>
+    <property name="project.full.version" value="${project.version}-${BUILD_NUMBER}"/>
+	
+    <target name="makedist" description="prepare everything in the dist folder">
+        <copy todir="${jar.dir}/lib">
+            <fileset dir="${build.dir}/lib">
+                <include name="**/*.*"/>
+            </fileset>
+            <flattenmapper/>
+        </copy>
+        <copy todir="${jar.dir}/macros">
+            <fileset dir="${macros.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+        <copy todir="${jar.dir}">
+            <fileset dir=".">
+                <include name="run.sh"/>
+                <include name="run.bat"/>
+            </fileset>
+        </copy>
+        <copy todir="${jar.dir}">
+            <fileset dir="start">
+                <include name="*.jar"/>
+                <include name="*.properties"/>
+            </fileset>
+        </copy>        
+    </target>
+
+
+<!-- Allows us to use the IzPack Ant task, standalone-compiler.jar added to Ant lib -->
+    <taskdef name="izpack" classpath="${install.lib}/standalone-compiler.jar"
+    classname="com.izforge.izpack.ant.IzPackTask"/>
+
+
+    <target name="build.installationfiles" depends="makedist">
+        <!-- copy all installation files in a sub dir named by the current build version. -->
+        <mkdir dir="${install.dest}"/>
+        <property name="install.dest.sub" value="${install.dest}/${project.full.version}"/>
+        <mkdir dir="${install.dest.sub}"/>
+
+        <!-- copy the maven generated jar under "myjaphoo.jar" to the dest folder-->
+        <copyfile src="${build.dir}/${project.artifactId}-${project.version}.jar" dest="${jar.dir}/${project.artifactId}.jar" />
+               <!-- generic zip install -->
+        <zip destfile="${basedir}/${install.dest.sub}/${project.artifactId}-${project.full.version}-os-independent.zip"
+       basedir="${jar.dir}"/>
+
+
+
+            <!-- Run installer build -->
+        <echo message="Running IzPack to build the installer..."/>
+        <izpack input="${basedir}/${install.dir}/install-definition.xml"
+        output="${basedir}/${install.dest.sub}/${project.artifactId}-${project.full.version}-installer.jar"
+        installerType="standard"
+        inheritAll="true"
+        basedir="${basedir}/${install.dir}"
+        compression="deflate"
+        compressionlevel="9"/>
+
+
+        <taskdef name="launch4j"
+                classpath="${basedir}/${install.dir}/launch4j/launch4j.jar:${basedir}/${install.dir}/launch4j/xstream.jar"
+                classname="net.sf.launch4j.ant.Launch4jTask"/>
+
+        <launch4j configFile="${basedir}/${install.dir}/launch4jconfig.xml" 
+                  jar="${basedir}/${install.dest.sub}/${project.artifactId}-${project.full.version}-installer.jar"
+                  outfile="${basedir}/${install.dest.sub}/${project.artifactId}-${project.full.version}-wininstaller.exe"
+                  productVersion="0.0.0.0"
+                  txtProductVersion="0.0.0.0"
+                  fileVersion="0.0.0.0"
+                  txtFileVersion="0.0.0.0"
+                  bindir="${basedir}/${install.dir}/launch4j"
+                   />
+
+        <!-- copy jar also under unique name defined by the jenkins job; makes it easier when dowloading from jenkins for local retesting when dealing with multiple jar-versions -->
+        <copyfile src="${jar.dir}/${project.artifactId}.jar" dest="${jar.dir}/${JOB_NAME}-${project.full.version}.jar"/>
+        <copyfile src="${build.dir}/${project.artifactId}-${project.version}-jar-with-dependencies.jar" dest="${basedir}/${install.dest.sub}/${project.artifactId}-${project.full.version}-jar-with-dependencies.jar" />
+
+
+        <echo message="Done."/>
+    
+    </target>
+</project>

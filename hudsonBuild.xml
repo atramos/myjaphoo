@@ -1,0 +1,346 @@
+
+<project name="myjaphoo" basedir="." default="main">
+
+    <!-- get all env variables from hudson in this ant file: -->
+    <property environment="env"/>
+
+    
+    <property name="src.dir"     value="src/main/java"/>
+    <property name="src.resources.dir"     value="src/main/resources"/>
+    <property name="tst.dir"     value="src/test/java"/>
+    <property name="tst.resources.dir"     value="src/test/resources"/>
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="instrumented.dir" value="${build.dir}/instrumentedclasses"/>
+    <property name="srccopy.dir" value="${build.dir}/src/src"/>
+    <property name="srctestcopy.dir" value="${build.dir}/src/tst"/>
+    
+    <property name="src.common.copy.dir" value="${build.dir}/src/src-common-lib"/>
+    <property name="common.classes.dir" value="${build.dir}/classes-common-lib"/>
+	
+    <property name="classes.tst.dir" value="${build.dir}/tstclasses"/>
+    <property name="test.result.dir" value="${build.dir}/tstresult"/>
+    <property name="test.reports.dir" value="${build.dir}/tstreports"/>
+    <property name="coverage.dir" value="${build.dir}/coverage"/>
+    <property name="coverage.xml.dir" value="${build.dir}/coveragexml"/>
+    <property name="jar.dir"     value="${build.dir}/dist"/>
+    <property name="lib.dir"     value="lib"/>
+    <property name="macros.dir"     value="macros"/>
+    <property name="main-class"  value="org.myjaphoo.MyjaphooApp"/>
+
+    <property name="install.dir"     value="installation"/>
+    <property name="install.lib"     value="${install.dir}/lib"/>
+    <property name="install.dest" value="${build.dir}/installation"/>
+    <property name="doc.dir" value="documentation"/>
+    <property name="testrundir"     value="${build.dir}/testrundata"/>
+    <property name="testressources"     value="testcaserunressources"/>
+
+
+    <property file="build.properties"/>
+    
+    <tstamp>
+        <format property="timestamp.isoformat" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
+    </tstamp>
+	
+    <path id="cobertura.classpath">
+        <fileset dir="libruntime" includes="**/*.jar" />
+        <fileset dir="${lib.dir}" includes="**/*.jar" />
+    </path>
+        
+        
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar" />
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${classes.tst.dir}"/>
+    </path>
+	
+    <path id="libraries.classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar" />
+    </path>
+
+    <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+
+
+	<!-- convert the libraries to be included in the 
+	  Class-Path attribute of the MANIFEST.MF file -->
+    <pathconvert property="lib.project.manifest.classpath"
+	             pathsep=" ">
+        <path refid="libraries.classpath"/>
+        <chainedmapper>
+            <flattenmapper/>
+            <globmapper from="*" to="lib/*"/>
+        </chainedmapper>
+    </pathconvert>
+	
+        
+    <target name="checkProperties" description="Checks if hudson props are there, if not, set from build.number file ">
+        <property name="check.buildnumber" value="$${env.BUILD_NUMBER}"/>
+        <condition property="env.BUILD_NUMBER" value="56" >
+            <or>
+                <equals arg1="${check.buildnumber}" arg2="${env.BUILD_NUMBER}"/>
+            </or>
+        </condition>
+        
+        <property name="check.svnrevision" value="$${env.BUILD_TAG}"/>
+        <condition property="env.BUILD_TAG" value="(local build)" >
+            <or>
+                <equals arg1="${check.svnrevision}" arg2="${env.BUILD_TAG}"/>
+            </or>
+        </condition>        
+        <echo message="Build version: ${wm.version} build ${env.BUILD_NUMBER} ${timestamp.isoformat}">
+        </echo>
+    </target>        
+        
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${testrundir}"/>
+        <mkdir dir="${test.reports.dir}"/>
+        <mkdir dir="${test.result.dir}"/>
+        <delete dir = "." includes="logging.log*"/>
+        <delete dir = "." includes="wmlogging.log*"/>
+    </target>
+
+    <target name="compile" depends="clean,checkProperties">
+    	
+    	<!-- copy sources for compilation and substitute some properties -->
+        <copy todir="${srccopy.dir}" >
+            <fileset dir="${src.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+        <copy todir="${srccopy.dir}" >
+            <fileset dir="${src.resources.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+        <copy todir="${srctestcopy.dir}" >
+            <fileset dir="${tst.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+        <copy todir="${srctestcopy.dir}" >
+            <fileset dir="${tst.resources.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+    	<!-- substitute variables in hirudoconstants -->
+        <copy todir="${srccopy.dir}" overwrite="true">
+            <fileset dir="${src.resources.dir}" >
+                <include name="**/*.properties"/>
+            </fileset>
+            <filterset>
+                <filter token="BUILDDATE" value="${timestamp.isoformat}"/>
+                <filter token="VERSION" value="${wm.version}"/>
+                <filter token="BUILD_TAG" value="${env.BUILD_TAG}"/>
+                <filter token="MERCURIAL_REVISION" value="${env.MERCURIAL_REVISION}"/>
+                <filter token="BUILD_NUMBER" value="${env.BUILD_NUMBER}"/>
+            </filterset>
+        </copy>
+    	
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${classes.tst.dir}"/>
+        <javac srcdir="${srccopy.dir}" destdir="${classes.dir}" classpathref="classpath" debug="true" target="1.5" encoding="utf-8" />
+    	<!-- copy over all ressource files from source folder -->
+        <copy todir="${classes.dir}" overwrite="true">
+            <fileset dir="${srccopy.dir}" includes="**/*.properties"/>
+            <fileset dir="${srccopy.dir}" includes="**/*.gif" />
+            <fileset dir="${srccopy.dir}" includes="**/*.txt" />
+            <fileset dir="${srccopy.dir}" includes="**/*.png" />
+            <fileset dir="${srccopy.dir}" includes="**/*.jpg" />
+            <fileset dir="${srccopy.dir}" includes="**/*.xml" />
+            <fileset dir="${srccopy.dir}" includes="**/*.bsh" />
+            <fileset dir="${srccopy.dir}" includes="**/*.groovy" />
+        </copy>
+        <javac srcdir="${srctestcopy.dir}" destdir="${classes.tst.dir}" classpathref="classpath" debug="true" target="1.5" encoding="utf-8" />
+    </target>
+
+
+
+
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}" >
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+                <attribute name="Class-Path" value="${lib.project.manifest.classpath}"/>
+                <attribute name="Implementation-Version" value="${wm.version}"/>
+                <attribute name="Build-Number" value="${env.BUILD_NUMBER}"/>
+                <attribute name="Build-Date" value="${timestamp.isoformat}"/>
+                <attribute name="Build-Tag" value="${env.BUILD_TAG}"/>
+                <attribute name="Mercurial-Revision" value="${env.MERCURIAL_REVISION}"/>
+            </manifest>
+        </jar>
+    </target>
+	
+    <target name="makedist" depends="jar">
+        <copy todir="${jar.dir}/lib">
+            <fileset dir="${lib.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+            <flattenmapper/>
+        </copy>
+        <copy todir="${jar.dir}/macros">
+            <fileset dir="${macros.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+        <copy todir="${jar.dir}">
+            <fileset dir=".">
+                <include name="run.sh"/>
+                <include name="run.bat"/>
+            </fileset>
+        </copy>
+        <copy todir="${jar.dir}">
+            <fileset dir="start">
+                <include name="*.jar"/>
+                <include name="*.properties"/>
+            </fileset>
+        </copy>        
+    </target>
+	
+    <!-- testlauf ohne cobertura (zum lokalen testen oder so, laeuft schneller) -->
+    <target name="test" depends="makedist">
+        <copyfile src="${testressources}/preferences.properties" dest="${testrundir}/preferences.properties"/>
+        <junit printsummary="false"
+			   errorProperty="test.failed"
+			   failureProperty="test.failed" timeout="60000">
+            <classpath refid="classpath"/>
+            <sysproperty key="wankman.model.util.UserDirectory" value="${basedir}/${testrundir}"/>
+            <sysproperty key="test.pics" value="${basedir}/${testressources}/pics"/>
+            
+            <formatter type="brief" usefile="false"/>
+            <formatter type="xml"/>
+            <batchtest todir="${test.result.dir}">
+                
+                <fileset dir="${classes.tst.dir}" includes="**/*Test.class" excludes="**/Abstract*Test.class"/>
+            </batchtest>
+			
+        </junit>
+		
+        <junitreport todir="${test.result.dir}">
+            <fileset dir="${test.result.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${test.reports.dir}"/>
+        </junitreport>
+		
+        <fail message="Tests failed. Check log and/or reports" if="test.failed"/>
+		
+    </target>
+	
+    <!-- testlauf mit cobertura (wird von hudson ausgefuehrt) -->    
+    <target name="testwithCobertura" depends="makedist">
+        <copyfile src="${testressources}/preferences.properties" dest="${testrundir}/preferences.properties"/>
+        <delete file="cobertura.ser" />
+
+        <cobertura-instrument todir="${instrumented.dir}">
+            <ignore regex="org.apache.log4j.*" />
+            <fileset dir="${classes.dir}">
+                <include name="**/*.class" />
+                <exclude name="**/*Test.class" />
+            </fileset>
+
+        </cobertura-instrument>
+        
+        
+        <junit fork="yes"  printsummary="false"
+			   errorProperty="test.failed"
+			   failureProperty="test.failed" timeout="60000">
+                               
+	<!--
+		Specify the name of the coverage data file to use.
+		The value specified below is the default.
+	-->
+            <sysproperty key="net.sourceforge.cobertura.datafile"
+		file="${basedir}/cobertura.ser" />    
+            <sysproperty key="wankman.model.util.UserDirectory" value="${basedir}/${testrundir}"/>    
+            <sysproperty key="test.pics" value="${basedir}/${testressources}/pics"/>                   
+	<!--
+		Note the classpath order: instrumented classes are before the
+		original (uninstrumented) classes.  This is important.
+	-->
+            <classpath location="${instrumented.dir}" />                               
+            <classpath refid="classpath"/>
+	<!--
+		The instrumented classes reference classes used by the
+		Cobertura runtime, so Cobertura and its dependencies
+		must be on your classpath.
+	-->
+            <classpath refid="cobertura.classpath" />            
+            
+            <formatter type="brief" usefile="false"/>
+            <formatter type="xml"/>
+            <batchtest todir="${test.result.dir}">
+                <fileset dir="${classes.tst.dir}" includes="**/*Test.class" excludes="**/Abstract*Test.class"/>
+            </batchtest>
+			
+        </junit>
+		
+        <junitreport todir="${test.result.dir}">
+            <fileset dir="${test.result.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${test.reports.dir}"/>
+        </junitreport>
+		
+        <cobertura-report format="html" destdir="${coverage.dir}" srcdir="${src.dir}" />        
+        <cobertura-report format="xml" destdir="${coverage.xml.dir}" srcdir="${src.dir}" />          
+                
+        <fail message="Tests failed. Check log and/or reports" if="test.failed"/>
+		
+    </target>        
+        
+    <target name="clean-build" depends="clean,jar"/>
+
+    <target name="main" depends="clean, jar, makedist, build.installationfiles, testwithCobertura"/>
+
+<!-- Allows us to use the IzPack Ant task, standalone-compiler.jar added to Ant lib -->
+    <taskdef name="izpack" classpath="${install.lib}/standalone-compiler.jar"
+    classname="com.izforge.izpack.ant.IzPackTask"/>
+
+
+    <target name="build.installationfiles">
+        <!-- copy all installation files in a sub dir named by the current build version. -->
+        <mkdir dir="${install.dest}"/>
+        <property name="install.dest.sub" value="${install.dest}/${wm.version}.${env.BUILD_NUMBER}"/>
+        <mkdir dir="${install.dest.sub}"/>
+        <!-- generic zip install -->
+        <zip destfile="${basedir}/${install.dest.sub}/${product.short.name}-${wm.version}-${env.BUILD_NUMBER}-os-independent.zip"
+       basedir="${jar.dir}"
+  />
+            <!-- Run installer build -->
+        <echo message="Running IzPack to build the installer..."/>
+        <izpack input="${basedir}/${install.dir}/install-definition.xml"
+        output="${basedir}/${install.dest.sub}/${product.short.name}-${wm.version}-${env.BUILD_NUMBER}-installer.jar"
+        installerType="standard"
+        inheritAll="true"
+        basedir="${basedir}/${install.dir}"
+        compression="deflate"
+        compressionlevel="9"/>
+
+
+        <taskdef name="launch4j"
+                classpath="${basedir}/${install.dir}/launch4j/launch4j.jar:${basedir}/${install.dir}/launch4j/xstream.jar"
+                classname="net.sf.launch4j.ant.Launch4jTask"/>
+
+        <launch4j configFile="${basedir}/${install.dir}/launch4jconfig.xml" 
+                  jar="${basedir}/${install.dest.sub}/${product.short.name}-${wm.version}-${env.BUILD_NUMBER}-installer.jar"
+                  outfile="${basedir}/${install.dest.sub}/${product.short.name}-${wm.version}-${env.BUILD_NUMBER}-wininstaller.exe"
+                  productVersion="0.0.0.0"
+                  txtProductVersion="0.0.0.0"
+                  fileVersion="0.0.0.0"
+                  txtFileVersion="0.0.0.0"
+                  bindir="${basedir}/${install.dir}/launch4j"
+                   />
+
+        <copyfile src="${doc.dir}/documentation.pdf" dest="${install.dest.sub}/documentation-${wm.version}-${env.BUILD_NUMBER}.pdf"/>
+
+        <!-- copy jar also under unique name defined by the jenkins job; makes it easier when dowloading from jenkins for local retesting when dealing with multiple jar-versions -->
+        <copyfile src="${jar.dir}/${ant.project.name}.jar" dest="${jar.dir}/${env.JOB_NAME}-${wm.version}-${env.BUILD_NUMBER}.jar"/>
+
+        <echo message="Done."/>
+    
+    </target>
+</project>

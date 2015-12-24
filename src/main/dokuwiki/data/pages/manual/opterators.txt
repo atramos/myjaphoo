@@ -1,0 +1,26 @@
+====== Operators ======
+
+This table lists all available operators.
+
+^Operator^Compatible Types^Description^
+ | * | NUMBER | mult |
+ | + | TEXT,NUMBER | plus |
+ | - | NUMBER | minus |
+ | / | NUMBER | div |
+ | < | TEXT,NUMBER,DATE | smaller than  |
+ | <= | TEXT,NUMBER,DATE | smaller or equal than |
+ | <> | TEXT,NUMBER,DATE | not equal |
+ | = | TEXT,NUMBER,DATE,NULL | Equality |
+ | > | TEXT,NUMBER,DATE | bigger than |
+ | >= | TEXT,NUMBER,DATE | bigger or equal than |
+ | and | BOOLEAN | logical and  |
+ | endswith | TEXT | ends with |
+ | is | TEXT,NUMBER,DATE,NULL | synonym for = |
+ | like | TEXT | like comparison (instr)  |
+ | not | BOOLEAN | logical not |
+ | or | BOOLEAN | logical or |
+ | regex | TEXT | Regular expression match (full match) |
+ | regexfind | TEXT | Regular expression find (a occurance of the pattern) |
+ | startswith | TEXT | starts with |
+ | wie | TEXT | synonym for like |
+ | ~ | TEXT | synonym for regex |

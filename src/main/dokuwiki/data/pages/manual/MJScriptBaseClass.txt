@@ -1,0 +1,354 @@
+
+
+======MJScriptBaseClass======
+This is the base class for groovy scripts. It contains mainly convenient methods to ease scripting.
+A detailed list of the commands is in [[ScriptCommands]]
+For more understanding you will have to have a look into the code, or at best get the full source code.
+
+
+<code java>
+ package org.myjaphoo.gui.scripting;
+
+import groovy.lang.Closure;
+import groovy.lang.Script;
+import org.mlsoft.common.acitivity.Channel;
+import org.mlsoft.common.acitivity.ChannelManager;
+import org.myjaphoo.MovieInMemoryFilter;
+import org.myjaphoo.MyjaphooController;
+import org.myjaphoo.gui.MainApplicationController;
+import org.myjaphoo.gui.action.scriptactions.CommonAction;
+import org.myjaphoo.gui.action.scriptactions.EntryContextAction;
+import org.myjaphoo.gui.action.scriptactions.MetatagContextAction;
+import org.myjaphoo.gui.action.scriptactions.TagContextAction;
+import org.myjaphoo.model.cache.CacheManager;
+import org.myjaphoo.model.db.MetaToken;
+import org.myjaphoo.model.db.MovieEntry;
+import org.myjaphoo.model.db.SavedGroovyScript;
+import org.myjaphoo.model.db.Token;
+import org.myjaphoo.model.filterparser.ParserException;
+import org.myjaphoo.model.filterparser.expr.JoinedDataRow;
+import org.myjaphoo.model.filterparser.processing.ProcessingRequirementInformation;
+import org.myjaphoo.model.registry.ComponentRegistry;
+
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Base class for groovy scripts that contains all predefined commands.
+ * Theses commands are mainly the same that the CacheManager provides to list and manipulate the data.
+
+ */
+public abstract class MJScriptBaseClass extends Script {
+
+    /* @wiki:ScriptCommands
+
+      ======Commands for Scripts======
+      The following commands are available within myjaphoo scripts. For more understanding have also a look
+      into the source file [[MJScriptBaseClass.java|MJScriptBaseClass]] which is the groovy base class which implements the commands.
+
+     */
+
+    /* @wiki:MJScriptBaseClass
+
+      ======MJScriptBaseClass======
+      This is the base class for groovy scripts. It contains mainly convenient methods to ease scripting.
+      A detailed list of the commands is in [[ScriptCommands]]
+      For more understanding you will have to have a look into the code, or at best get the full source code.
+      ${f.listing(org.myjaphoo.gui.scripting.MJScriptBaseClass.class)}
+
+
+     */
+
+    private static final ProcessingRequirementInformation NOGROUPING = new ProcessingRequirementInformation() {
+        @Override
+        public boolean needsTagRelation() {
+            return false;
+        }
+
+        @Override
+        public boolean needsMetaTagRelation() {
+            return false;
+        }
+    };
+    private static String[] methHelpList = {
+            "help: prints all commands",
+            "movies(): returns all movies",
+            "tags(): return all tags",
+            "metaTags(): return all meta tags",
+            "print(): prints a object",
+            "assignMetaTokenToToken: assignes a meta tag to a tag",
+            "assignToken2MovieEntry: assigns a tag to a movie",
+            "createMetaToken: creates a new meta tag",
+            "createToken: creates a tag",
+            "editMetaToken: edit a meta tag",
+            "editMovie: edit a movie",
+            "editToken: edit a tag",
+            "moveMetaTokens: move a meta tag in its hierarchy",
+            "moveToken: move tag in its hierarchy",
+            "removeMetaToken: remove meta tag",
+            "removeToken: remove tag",
+            "unAssignMetaTokenFromToken: unassign meta tag from tag",
+            "unassignTokenFromMovies: unassign tag from movies",
+            "removeMovieEntry: remove movie entry",
+            "newMovie: create new movie",
+            "extractMovieInfos: extract movie infos",
+            "query: query movies by filter language",
+
+    };
+
+    /**
+     * to let call "help" without parenthesis...
+     */
+    public String[] help = methHelpList;
+
+
+    public String[] help() {
+        return help;
+    }
+
+
+    /** @wiki:ScriptCommands
+     * ====Query====
+     * Executes a filter language query and returns all matching entries.
+     *
+     * @param filterExpression
+     * @return
+     * @throws ParserException
+     *
+     */
+    public Set<MovieEntry> query(String filterExpression) throws ParserException {
+        List<JoinedDataRow> result = MovieInMemoryFilter.filter(filterExpression, NOGROUPING);
+        return condenseResult(result);
+    }
+
+    private Set<MovieEntry> condenseResult(List<JoinedDataRow> result) {
+        HashSet<MovieEntry> mSet = new HashSet<>();
+        for (JoinedDataRow jdr : result) {
+            mSet.add(jdr.getEntry());
+        }
+        return mSet;
+    }
+
+    /**
+     * Returns all movies as a list of MovieEntry objects from the cache.
+     * @wiki:ScriptCommands
+     * ====movies====
+     * Returns all movies as a list of MovieEntry objects from the cache.
+     * <p/>
+     * @return all movie entries
+     */
+    public List<MovieEntry> movies() {
+        return CacheManager.getCacheActor().getImmutableModel().getMovies();
+    }
+
+    /** @wiki:ScriptCommands
+     * ====tags====
+     * Returns all tags as a list of Token objects from the cache.
+     * @return
+     */
+    public List<Token> tags() {
+        return CacheManager.getCacheActor().getImmutableModel().getTokenSet().asList();
+    }
+
+    /**
+     * @wiki:ScriptCommands
+     * ====metaTags====
+     * Returns all metatags as a list of MetaToken objects from the cache.
+     */
+    public List<MetaToken> metaTags() {
+        return CacheManager.getCacheActor().getImmutableModel().getMetaTokenSet().asList();
+    }
+
+    public void print(MovieEntry entry) {
+        System.out.printf("%s: %s\n", entry.getName(), entry.getCanonicalDir());
+    }
+
+    public void print(Token tag) {
+        System.out.printf("%s: %s\n", tag.getName(), tag.getDescription());
+    }
+
+    public void print(MetaToken mtag) {
+        System.out.printf("%s: %s\n", mtag.getName(), mtag.getDescription());
+    }
+
+    public void accumulateEvents() {
+        CacheManager.getCacheActor().accumulateEvents();
+    }
+
+    public void fireAllAccumulatedEvents() {
+        CacheManager.getCacheActor().fireAllAccumulatedEvents();
+    }
+
+
+    public void assignMetaTokenToToken(MetaToken metaToken, Token token) {
+        CacheManager.getCacheActor().assignMetaTokenToToken(metaToken, token);
+    }
+
+    public void assignToken2MovieEntry(final Token token, List<MovieEntry> movies) {
+        CacheManager.getCacheActor().assignToken2MovieEntry(token, movies);
+    }
+
+    public void createMetaToken(MetaToken mt, MetaToken parentToken) {
+        CacheManager.getCacheActor().createMetaToken(mt, parentToken);
+    }
+
+    public void createToken(Token token, Token parentToken) {
+        CacheManager.getCacheActor().createToken(token, parentToken);
+    }
+
+    public void editMetaToken(MetaToken mt) {
+        CacheManager.getCacheActor().editMetaToken(mt);
+    }
+
+    public void editMovie(MovieEntry entry) throws Exception {
+        CacheManager.getCacheActor().editMovie(entry);
+    }
+
+    public void editToken(Token token) {
+        CacheManager.getCacheActor().editToken(token);
+    }
+
+    public void moveMetaTokens(MetaToken tokenParent, MetaToken token2Move) {
+        CacheManager.getCacheActor().moveMetaTokens(tokenParent, token2Move);
+    }
+
+    public void moveToken(final Token newParent, final Token token2Move) {
+        CacheManager.getCacheActor().moveToken(newParent, token2Move);
+    }
+
+    public void removeMetaToken(MetaToken mt) {
+        CacheManager.getCacheActor().removeMetaToken(mt);
+    }
+
+    public void removeToken(final Token currentSelectedToken) {
+        CacheManager.getCacheActor().removeToken(currentSelectedToken);
+    }
+
+    public void unAssignMetaTokenFromToken(MetaToken currMetaToken, List<Token> toks2Remove) {
+        CacheManager.getCacheActor().unAssignMetaTokenFromToken(currMetaToken, toks2Remove);
+    }
+
+    public void unassignTokenFromMovies(final Token token, final Collection<MovieEntry> movies) {
+        CacheManager.getCacheActor().unassignTokenFromMovies(token, movies);
+    }
+
+    public void removeMovieEntry(MovieEntry movieEntry) {
+        CacheManager.getCacheActor().removeMovieEntry(movieEntry);
+    }
+
+    public void newMovie(MovieEntry movieEntry) {
+        CacheManager.getCacheActor().newMovie(movieEntry);
+    }
+
+    public void extractMovieInfos(List<MovieEntry> entries) throws IOException, JAXBException {
+        MyjaphooController controller = (MyjaphooController) getBinding().getVariable("controller");
+        if (controller != null) {
+            controller.extractMovieInfos(entries);
+        } else {
+            throw new RuntimeException("no controller variable set!");
+        }
+    }
+
+    public List getSavedScripts() {
+        return MainApplicationController.getInstance().getScriptList();
+    }
+
+    public void editScript(SavedGroovyScript script) {
+        MyjaphooController controller = (MyjaphooController) getBinding().getVariable("controller");
+        controller.updateScript(script);
+    }
+
+    public void addScript(SavedGroovyScript script) {
+        MyjaphooController controller = (MyjaphooController) getBinding().getVariable("controller");
+        controller.addScript(script);
+    }
+
+    /**
+     * script example:
+     *
+     * movies().each { if (it.canonicalDir.startsWith("L:\\blubb")) {
+     it.setRating(org.myjaphoo.model.db.Rating.VERY_GOOD);
+     editMovie(it);
+
+     }}
+     */
+
+
+    /**
+     * user defined Action definition for a tag context action
+     * @param key
+     * @param actionDef
+     */
+    public void defTagContextAction(String key, Closure actionDef) {
+        TagContextAction entry = new TagContextAction();
+        actionDef.setDelegate(entry);
+        actionDef.setResolveStrategy(Closure.DELEGATE_FIRST);
+        actionDef.call();
+
+        ComponentRegistry.registry.register(key, TagContextAction.class, entry);
+    }
+
+    public void defMetaTagContextAction(String key, Closure actionDef) {
+        MetatagContextAction entry = new MetatagContextAction();
+        actionDef.setDelegate(entry);
+        actionDef.setResolveStrategy(Closure.DELEGATE_FIRST);
+        actionDef.call();
+
+        ComponentRegistry.registry.register(key, MetatagContextAction.class, entry);
+    }
+
+    public void defMovieEntryContextAction(String key, Closure actionDef) {
+        EntryContextAction entry = new EntryContextAction();
+        actionDef.setDelegate(entry);
+        actionDef.setResolveStrategy(Closure.DELEGATE_FIRST);
+        actionDef.call();
+
+        ComponentRegistry.registry.register(key, EntryContextAction.class, entry);
+    }
+
+    public void defCommonAction(String key, Closure actionDef) {
+        CommonAction entry = new CommonAction();
+        actionDef.setDelegate(entry);
+        actionDef.setResolveStrategy(Closure.DELEGATE_FIRST);
+        actionDef.call();
+
+        ComponentRegistry.registry.register(key, CommonAction.class, entry);
+    }
+
+    /*  example of a tag action def in a script
+        defTagContextAction("myaction") {
+                name = "Hello World!";
+                descr = "blabla"
+                action= { controller, tags ->  controller.message "hi, I got the following tags: $tags"}
+        }
+     */
+
+
+    /**
+     * executes a closure with a channel to display progress and messages within scripts.
+     * The channel is an argument for the closure
+     * @param activityName  the activity name for the new channel
+     * @param steps the expected steps for the progress
+     * @param closure the closure to execute
+     */
+    public void withProgress(String activityName, int steps, Closure closure) {
+        Channel channel = ChannelManager.createChannel(MJScriptBaseClass.class, activityName);
+        channel.startActivity();
+        channel.setProgressSteps(steps);
+        try {
+            closure.call(channel);
+        } finally {
+            channel.stopActivity();
+        }
+    }
+}
+ </code>
+
+
+
+
+

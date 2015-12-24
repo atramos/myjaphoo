@@ -1,0 +1,189 @@
+
+=====Grouping Media Data=====
+
+
+
+You can define the structure, that is shown in the media tree. This works with so called "Groupings".  The default grouping is grouped by the directory structure which just groups the media files by folders and file names. 
+
+You have three possible methods to set and change the groupings in the media tree:
+
+
+
+  *choose a predefined Grouping 
+  *choose a combination of predefined grouping 
+  *define the grouping by using the grouping definition language
+
+
+
+The "Grouping" is defined in the text field in the "Group by" View. There are shortcuts to select the most common groupings (predefined groupings) via drop down buttons. 
+
+
+
+
+====Predefined Groupings ====
+
+{{ :documentation_html_m2c968ace.png |}}
+
+
+
+
+When you click the popup button "Predefined Groupings" you will see a list with the most common and relevant groupings. Just select one of the groupings and see how the structure in the media tree changes. When you select a grouping, the grouping text box changes and you will see the corresponding expression in terms of the grouping language.
+
+
+
+Predefined Groupings:
+
+    
+
+|Directory Structure|Groups by the directory structure|
+|Duplicate Structure|Groups duplicate files (each duplication into one folder)|
+|Duplicates with directory structure|Groups duplicate files showing also its directory structure|
+|Flat Tag Structure|Groups by tags. The tags are listed in a flat structure|
+|Hierarchical Tag Structure|Groups by tags, where the tags are displayed in their defined tag structure|
+|Hierarchical Tag/Dir Structure|Groups by tags with their tag structure, and as second level by directory structure|
+|by Keywords build from Pathname|Groups by words which are extracted from the path name|
+|by Keywords build from Pathname II|Groups by words which are extracted from the path name|
+|by Keywords build from Pathname III|Groups by words which are extracted from the path name|
+|File size and directory structure|Groups by a categorisation by file size and as second level by directory structure|
+|Rating and directory structure|Groups by rating and as second level by directory structure|
+|Rating/Tag/Dir Structure|Groups by rating, as second level by tag (flat) and as third by directory structure|
+|DB Comparison/Dir Structure|Builds two groups. One which contains all entries which are not in the comparison database and another one with entries which are also in the comparison database. Groups as second level by directory structure|
+|localisation on file system|Builds two groups. One which contains the files which could be found in the file system. The other one with all files which do not exist in the file system.|
+|Exif create date|Groups by exif create date of the files. Builds a structure of year, month and day.|
+
+//Table ////1////: Predefined Groupings//
+
+
+
+
+====Combinations of Predefined Groupings====
+
+{{ :documentation_html_7729fceb.png |}}
+
+
+
+You can select combinations of different groupings. This will result in a structure with sub-structures. The "Predefined Combinations" button contains a tree with possible combinations of individual groupings. You can click on one of the nodes in this tree. As a result, the media tree will build up the structure which is given by the path of all the nodes from the root down to the selected node. E.g. select the sub-node "Rating" of the node "Tag". This builds up the structure of all tags followed by the ratings in the media tree. This way you could freely build own combinations of all given groupings.
+
+
+
+
+====Grouping definition language====
+
+{{ :documentation_html_m5a993ec.png |}}
+
+The most flexible way to define groupings is by using the grouping definition language. You can input a grouping expression in the editor field. You see an example in the screen shot. It defines a 3 level grouping by the exif create date, then by assigned tags, and afterwards by an own defined categorisation for assigned ratings. 
+
+
+
+Internally, all groupings are saved with the grouping definition language, as this is the most flexible way to express groupings. If you e.g. select a certain predefined grouping, you can see the identical expression for the selected grouping in terms of the grouping definition language.
+
+
+======Language for self defined groupings======
+
+
+
+You could define your own group by expression based on all existing media attributes. You do this by inputting an expression in the group by text box. In this editor you could enter a list of grouping statements. The grouping algorithm is very similar to group by expressions in sql. So you will be able to group the result of the filter process by media identifiers or even more by expressions.
+The Group by language uses the same expression syntax and syntactical elements as for filtering, to get a full list of available elements refer to
+
+  * [[manual:FilteringData|Filtering Media Data]]
+    * [[manual:Identifiers|Identifiers]]
+    * [[manual:ExifIdentifiers|Exif-Identifiers]]
+    * [[manual:Opterators|Operators]]
+    * [[manual:Functions|Functions]]
+    * [[manual:Constants|Constants]]
+
+
+
+
+
+
+====Syntax====
+
+
+
+''GROUPING := (IFSTMT) | GROUPFUNCTION [, (IFSTMT) | GROUPFUNCTION]*''
+
+''IFSTMT :=[IF cond {literal} [elseif cond {literal}]*  [else {literal}]]''
+
+''GROUPFUNCTION := <a predefined grouping function name> | <a predefined identifier> | <expression with return type string>''
+
+''cond := the same as in filter expressions''
+
+
+
+
+
+
+====Examples====
+
+
+
+Typically you want to group simply by predefined grouping or by some media identifiers:
+
+''rating, tag''
+
+
+
+This will e.g. build a nested grouping by the rating attribute and then by the assigned tags.
+
+
+
+You could nest groupings as deep as you want by adding additional expressions separated by commata:
+
+''rating, tag, metatag, bookmark, exif_brightness, exif_annotations, directory''
+
+
+
+This will e.g. a 8 level nested grouping by all the given attributes
+
+
+
+Instead of just group by an attribute, you could group by an expression which returns a string. Such an expression could by any valid expression known from the filter language. It could also contain "if" expressions. Expressions must be enclosed in "(" and ")".
+
+
+
+''(if ismov() {"movie"} else {"no movies"})''
+
+
+
+This builds a grouping with two nodes: one for all movies, the other one for all non movies.
+
+
+
+Of course you could combine expressions and identifiers:
+
+
+
+''(if ismov() {"movie"} else {"no movies"}), rating, tag''
+
+
+
+Builds the "movie" and "no movies" group, with nested groupings by rating and tags.
+
+
+
+
+
+You could also use functions and identifiers which return string expressions:
+
+
+
+''(if ismov() {title} else {"no movies"}), rating, tag''
+
+
+
+
+
+You could use groupings to reorganize your collection:
+
+
+
+''tag, seq(concat(dir, removedigits(namewithoutsuffix)))''
+
+
+
+Groups by tag and a unique sequence number which maps from dir + file name without any digits to a unique number.
+
+====Auto completion====
+
+The grouping text editor field supports auto completion. If you press Ctrl-Space in the editor field an auto completion box opens which helps you and gives you hints how to complete your current expression part.
